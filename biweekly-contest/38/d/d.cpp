@@ -31,20 +31,31 @@ template <template<typename...> class T, typename t, typename... A>
 void pt(const T <t> &arg, const A&... args) { for (int i = 0, sze = arg.size(); i < sze; ++i) cout << arg[i] << " \n"[i == sze - 1]; pt(args...); }
 inline ll qpow(ll base, ll n) { assert(n >= 0); ll res = 1; while (n) { if (n & 1) res = res * base % mod; base = base * base % mod; n >>= 1; } return res; }
 //head
-constexpr int N = 1e5 + 10; 
-int n; 
+constexpr int N = 1e3 + 10; 
+int n, f[N][30];
+ll g[N][N]; 
 
 class Solution {
 public:
-    int maxWidthOfVerticalArea(vector<vector<int>>& points) {
-		n = SZ(points);
-		sort(all(points), [&](vector<int> a, vector<int> b){
-			return a[0] < b[0];
-		});
-		int res = 0;
-		for (int i = 1; i < n; ++i) chmax(res, points[i][0] - points[i - 1][0]);
-		return res;
-    }
+    int numWays(vector<string>& words, string target) {
+		int len = SZ(words[0]);
+		memset(f, 0, sizeof f);
+		memset(g, 0, sizeof g);
+		for (auto &w : words) {
+			for (int i = 0; i < len; ++i) {
+				++f[i + 1][w[i] - 'a'];
+			}
+		}
+		int lent = SZ(target);
+		for (int i = 0; i <= len; ++i) g[0][i] = 1;
+		for (int i = 1; i <= lent; ++i) {
+			for (int j = 1; j <= len; ++j) {
+				g[i][j] = g[i][j - 1];
+				chadd(g[i][j], g[i - 1][j - 1] * f[j][target[i - 1] - 'a'] % mod);
+			}
+		}
+		return g[lent][len];
+	}
 };
 
 void run() {

@@ -32,17 +32,35 @@ void pt(const T <t> &arg, const A&... args) { for (int i = 0, sze = arg.size(); 
 inline ll qpow(ll base, ll n) { assert(n >= 0); ll res = 1; while (n) { if (n & 1) res = res * base % mod; base = base * base % mod; n >>= 1; } return res; }
 //head
 constexpr int N = 1e5 + 10; 
-int n; 
+int n, m; 
+
+int ok(string s, string t) {
+	int len = SZ(t);
+	int lens = SZ(s);
+	int res = 0;
+	for (int i = 0; i + lens <= len; ++i) {
+		int l = i, r = i + lens - 1;
+		int diff = 0;
+		for (int j = l, _i = 0; j <= r; ++j, ++_i) {
+			diff += t[j] != s[_i];	
+		}
+		if (diff == 1) ++res;
+	}
+	return res;
+}
 
 class Solution {
 public:
-    int maxWidthOfVerticalArea(vector<vector<int>>& points) {
-		n = SZ(points);
-		sort(all(points), [&](vector<int> a, vector<int> b){
-			return a[0] < b[0];
-		});
+    int countSubstrings(string s, string t) {
+		n = SZ(s);
+		m = SZ(t);
 		int res = 0;
-		for (int i = 1; i < n; ++i) chmax(res, points[i][0] - points[i - 1][0]);
+		for (int i = 0; i < n; ++i) {
+			for (int j = i; j < n; ++j) {
+				string _s = s.substr(i, j - i + 1);
+				res += ok(_s, t);
+			}
+		}
 		return res;
     }
 };
