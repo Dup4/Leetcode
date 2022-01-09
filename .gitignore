@@ -1,10 +1,9 @@
-
 *
 
 !*/
 !README.md
 !.gitignore
-
+!*.png
 
 !*.in
 !*.out
@@ -15,4 +14,3 @@
 !*.go
 !*.java
 !*.js
-
