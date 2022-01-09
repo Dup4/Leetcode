@@ -4,6 +4,8 @@
 !README.md
 !.gitignore
 !.editorconfig
+!.clang-format
+
 !*.png
 
 !*.in
