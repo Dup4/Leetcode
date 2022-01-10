@@ -19,3 +19,9 @@ jobs:
             exclude: './lib'
             extensions: 'h,cpp,c'
             clangFormatVersion: 13
+
+      - uses: EndBug/add-and-commit@v7
+        with:
+          author_name: GitHub Actions
+          author_email: 41898282+github-actions[bot]@users.noreply.github.com
+          message: 'style: clang-format changes'
