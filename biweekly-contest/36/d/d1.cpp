@@ -2,8 +2,8 @@
 using namespace std;
 
 int main() {
-	priority_queue <int, vector<int>, greater<int>> pq;
-	pq.push(1);
-	pq.push(2);
-	cout << pq.top();
+    priority_queue<int, vector<int>, greater<int>> pq;
+    pq.push(1);
+    pq.push(2);
+    cout << pq.top();
 }
