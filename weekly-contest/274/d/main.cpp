@@ -1,5 +1,5 @@
-#include <d.hpp>
 #include <bits/stdc++.h>
+#include <d.hpp>
 #include <debug.hpp>
 using namespace std;
 
