@@ -15,20 +15,20 @@ using pLL = pair<ll, ll>;
 
 class Solution {
 public:
-    int minSwaps(vector<int>& nums) {
-        int n = nums.size();
-
-        int m = 0;
-        for (auto& a : nums) m += a;
-
-        vector<int> sum(n * 2 + 1, 0);
-        for (int i = 1; i <= n * 2; i++) {
-            sum[i] = sum[i - 1] + (nums[(i - 1) % n] == 0);
+    vector<string> divideString(string s, int k, char fill) {
+        vector<string> res;
+        string t;
+        for (auto& c : s) {
+            t += c;
+            if (t.size() == k) {
+                res.push_back(t);
+                t = "";
+            }
         }
 
-        int res = n;
-        for (int i = 0; i < n; i++) {
-            res = min(res, sum[i + m] - sum[i]);
+        if (!t.empty()) {
+            t += string(k - (t.size()), fill);
+            res.push_back(t);
         }
 
         return res;
