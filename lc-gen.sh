@@ -11,7 +11,7 @@ if [[ -f "${UTILS_SH}" ]]; then
     source "${UTILS_SH}"
 fi
 
-template_name="t.hpp"
+template_name="template.hpp"
 main_name="main.cpp"
 
 template_path="${TOP_DIR}"/template/"${template_name}"
@@ -19,13 +19,14 @@ template_suffix=$(echo "$template_path" | awk -F "." '{print $NF}')
 main_path="${TOP_DIR}"/template/"${main_name}"
 
 function generate_template() {
-    local current_template_path="${1}"
-    local current_main_path="${2}"
+    local current_problem_id="${1}"
+    local current_template_path="${2}"
+    local current_main_path="${3}"
 
     cp "${template_path}" "${current_template_path}"
     INFO "Template created successfully. [path=${PWD}/${current_template_path}]"
 
-    echo "#include <${c}.${template_suffix}>" >"${current_main_path}"
+    echo "#include <${current_problem_id}.${template_suffix}>" >"${current_main_path}"
     cat "${main_path}" >>"${current_main_path}"
     cat >>"${current_main_path}" <<EOF
 
@@ -36,11 +37,10 @@ int main() {
 EOF
 
     INFO "Main created successfully. [path=${PWD}/${current_main_path}]"
-
 }
 
 if [[ -z "${1}" ]]; then
-    generate_template "${PWD}/${BASENAME}.${template_suffix}" "${PWD}/${main_name}"
+    generate_template "${BASENAME}" "${PWD}/${BASENAME}.${template_suffix}" "${PWD}/${main_name}"
     exit 0
 fi
 
@@ -71,7 +71,7 @@ for c in {a..z}; do
 
     mkdir "${c}"
 
-    generate_template "${current_template_path}" "${current_main_path}"
+    generate_template "${c}" "${current_template_path}" "${current_main_path}"
 
     ((i++))
 done
