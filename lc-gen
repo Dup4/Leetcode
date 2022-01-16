@@ -19,7 +19,7 @@ fi
 
 contest_id="${1}"
 problem_num="4"
-template_name="t.cpp"
+template_name="t.hpp"
 
 if [[ -n "${2}" ]]; then
     problem_num="${2}"
