@@ -15,8 +15,6 @@ source "${INSTALL_LIST_SH}"
 for file in ${install_list}; do
     if [[ -f "${INSTALL_PATH}/${file}" ]]; then
         rm "${INSTALL_PATH}/${file}"
+        INFO "Uninstall Successfully. [binary=${file}]"
     fi
-
-    ln -s "${TOP_DIR}/${file}.sh" "${INSTALL_PATH}/${file}"
-    INFO "Install Successfully. [binary=${file}]"
 done
