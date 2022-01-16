@@ -15,8 +15,10 @@
 !*.out
 
 !*.sh
-!*.cpp
+!*.h
 !*.c
+!*.hpp
+!*.cpp
 !*.py
 !*.go
 !*.java
