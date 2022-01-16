@@ -19,14 +19,14 @@ template_suffix=$(echo "$template_path" | awk -F "." '{print $NF}')
 main_path="${TOP_DIR}"/template/"${main_name}"
 
 function generate_template() {
-    local current_problem_id="${1}"
+    local include_template_path="${1}"
     local current_template_path="${2}"
     local current_main_path="${3}"
 
     cp "${template_path}" "${current_template_path}"
     INFO "Template created successfully. [path=${PWD}/${current_template_path}]"
 
-    echo "#include <${current_problem_id}.${template_suffix}>" >"${current_main_path}"
+    echo "#include <${include_template_path}>" >"${current_main_path}"
     cat "${main_path}" >>"${current_main_path}"
     cat >>"${current_main_path}" <<EOF
 
@@ -40,7 +40,7 @@ EOF
 }
 
 if [[ -z "${1}" ]]; then
-    generate_template "${BASENAME}" "${PWD}/${BASENAME}.${template_suffix}" "${PWD}/${main_name}"
+    generate_template "${PWD/${TOP_DIR}\//}/${BASENAME}.${template_suffix}" "${PWD}/${BASENAME}.${template_suffix}" "${PWD}/${main_name}"
     exit 0
 fi
 
@@ -71,7 +71,7 @@ for c in {a..z}; do
 
     mkdir "${c}"
 
-    generate_template "${c}" "${current_template_path}" "${current_main_path}"
+    generate_template "${PWD/${TOP_DIR}\//}/${c}/${c}.${template_suffix}" "${current_template_path}" "${current_main_path}"
 
     ((i++))
 done
