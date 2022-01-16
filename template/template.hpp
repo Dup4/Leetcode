@@ -1,4 +1,11 @@
 #include <bits/stdc++.h>
+
+#ifdef HOME
+#include <debug.hpp>
+#else
+#define dbg(...)
+#endif
+
 using namespace std;
 #define endl "\n"
 #define fi first
