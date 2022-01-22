@@ -11,36 +11,20 @@ if [[ -f "${UTILS_SH}" ]]; then
     source "${UTILS_SH}"
 fi
 
-template_name="template.hpp"
-main_name="main.cpp"
+template_name="template.cpp"
 
 template_path="${TOP_DIR}"/template/"${template_name}"
 template_suffix=$(echo "$template_path" | awk -F "." '{print $NF}')
-main_path="${TOP_DIR}"/template/"${main_name}"
 
 function generate_template() {
-    local include_template_path="${1}"
-    local current_template_path="${2}"
-    local current_main_path="${3}"
+    local current_template_path="${1}"
 
     cp "${template_path}" "${current_template_path}"
     INFO "Template created successfully. [path=${PWD}/${current_template_path}]"
-
-    echo "#include <${include_template_path}>" >"${current_main_path}"
-    cat "${main_path}" >>"${current_main_path}"
-    cat >>"${current_main_path}" <<EOF
-
-int main() {
-    auto s = Solution();
-    return 0;
-}
-EOF
-
-    INFO "Main created successfully. [path=${PWD}/${current_main_path}]"
 }
 
 if [[ -z "${1}" ]]; then
-    generate_template "${PWD/${TOP_DIR}\//}/${BASENAME}.${template_suffix}" "${PWD}/${BASENAME}.${template_suffix}" "${PWD}/${main_name}"
+    generate_template "${PWD}/${BASENAME}.${template_suffix}"
     exit 0
 fi
 
@@ -67,11 +51,10 @@ for c in {a..z}; do
     fi
 
     current_template_path="${c}/${c}.${template_suffix}"
-    current_main_path="${c}/${main_name}"
 
     mkdir "${c}"
 
-    generate_template "${PWD/${TOP_DIR}\//}/${c}/${c}.${template_suffix}" "${current_template_path}" "${current_main_path}"
+    generate_template "${current_template_path}"
 
     ((i++))
 done
