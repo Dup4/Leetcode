@@ -1,5 +1,5 @@
-#include <biweekly-contest/70/b/b.hpp>
 #include <bits/stdc++.h>
+#include <biweekly-contest/70/b/b.hpp>
 #include <debug.hpp>
 using namespace std;
 
