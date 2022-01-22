@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-#ifdef HOME
+#ifdef LOCAL
 #include <debug.hpp>
 #else
 #define dbg(...)
