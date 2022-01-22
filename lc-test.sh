@@ -12,7 +12,7 @@ fi
 filename="${BASENAME}"
 
 set -x
-g++ -o "${filename}.out" "main.cpp" -std=c++17 -O2 -W -Wall -DLOCAL -I"${TOP_DIR}" -I"${TOP_DIR}/template"
+g++ -o "${filename}.out" "${filename}.cpp" -std=c++17 -O2 -W -Wall -DLOCAL -I"${TOP_DIR}/template"
 set +x
 
 if [[ -f "${filename}.out" ]]; then
