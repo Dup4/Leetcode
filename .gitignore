@@ -6,6 +6,7 @@
 !.gitignore
 !.editorconfig
 !.clang-format
+!leetcode.code-workspace
 
 !*.yml
 
