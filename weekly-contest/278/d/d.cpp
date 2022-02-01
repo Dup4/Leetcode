@@ -156,15 +156,15 @@ public:
 int main() {
     auto s = Solution();
     {
-        auto sv = vector<string>{"a", "b", "ab", "cde"};
-        auto ans = s.groupStrings(sv);
-        dbg(ans);
+        auto w = vector<string>{"a", "b", "ab", "cde"};
+        auto ans = s.groupStrings(w);
+        assert_eq(ans, {2, 3});
     }
 
     {
-        auto sv = vector<string>{"web", "a", "te", "hsx", "v", "k", "a", "roh"};
-        auto ans = s.groupStrings(sv);
-        dbg(ans);
+        auto w = vector<string>{"web", "a", "te", "hsx", "v", "k", "a", "roh"};
+        auto ans = s.groupStrings(w);
+        assert_eq(ans, {5, 4});
     }
 
     return 0;
