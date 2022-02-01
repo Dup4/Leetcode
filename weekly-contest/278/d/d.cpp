@@ -87,7 +87,7 @@ struct UFS {
 class Solution {
 public:
     vector<int> groupStrings(vector<string>& words) {
-        auto f = [](string& s) {
+        constexpr auto f = [](string& s) {
             ll res = 0;
             for (auto& c : s) {
                 res |= 1ll << (c - 'a');
