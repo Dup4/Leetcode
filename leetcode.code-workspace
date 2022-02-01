@@ -1,39 +1,39 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {
-		"C_Cpp.default.includePath": [
-			"${workspaceFolder}/**",
-		],
-		"C_Cpp.default.defines": [
-			"LOCAL"
-		],
-		"files.associations": {
-			"BUILD": "starlark",
-			"type_traits": "cpp",
-			"array": "cpp",
-			"deque": "cpp",
-			"forward_list": "cpp",
-			"list": "cpp",
-			"string": "cpp",
-			"unordered_map": "cpp",
-			"unordered_set": "cpp",
-			"vector": "cpp",
-			"string_view": "cpp",
-			"initializer_list": "cpp",
-			"ranges": "cpp",
-			"span": "cpp",
-			"regex": "cpp",
-			"valarray": "cpp",
-			"__hash_table": "cpp",
-			"__locale": "cpp",
-			"__string": "cpp",
-			"algorithm": "cpp",
-			"filesystem": "cpp",
-			"iosfwd": "cpp"
-		}
-	},
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "C_Cpp.default.includePath": [
+            "${workspaceFolder}/**",
+        ],
+        "C_Cpp.default.defines": [
+            "LOCAL"
+        ],
+        "files.associations": {
+            "BUILD": "starlark",
+            "type_traits": "cpp",
+            "array": "cpp",
+            "deque": "cpp",
+            "forward_list": "cpp",
+            "list": "cpp",
+            "string": "cpp",
+            "unordered_map": "cpp",
+            "unordered_set": "cpp",
+            "vector": "cpp",
+            "string_view": "cpp",
+            "initializer_list": "cpp",
+            "ranges": "cpp",
+            "span": "cpp",
+            "regex": "cpp",
+            "valarray": "cpp",
+            "__hash_table": "cpp",
+            "__locale": "cpp",
+            "__string": "cpp",
+            "algorithm": "cpp",
+            "filesystem": "cpp",
+            "iosfwd": "cpp"
+        }
+    },
 }
