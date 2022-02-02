@@ -91,63 +91,25 @@ inline ll qpow(ll base, ll n) {
 constexpr int N = 1e5 + 10;
 int n;
 
-map<int, int> mp;
-
-int dfs(int n) {
-    if (!n)
-        return 0;
-    if (n == 1)
-        return mp[n] = 1;
-    if (mp.count(n))
-        return mp[n];
-    int f = 1 + dfs(n ^ 1);
-    int x = __builtin_ffs(n);
-    if (x <= 30)
-        chmin(f, 1 + dfs(n ^ (1 << x)));
-    return mp[n] = f;
-}
-
 class Solution {
 public:
-    int minimumOneBitOperations(int n) {
-        mp.clear();
-        return dfs(n);
-        //		int res = 0;
-        //		while (n > 1) {
-        //			++res;
-        //			int zero = 0;
-        //			int pre = -1;
-        //			int pos = 0;
-        //			for (int i = 0; i < 31; ++i) {
-        //				int x = ((n >> i) & 1);
-        //				if (pre == 1 && zero == i - 1) {
-        //					pos = i;
-        //					break;
-        //				}
-        //				if (!x) ++zero;
-        //				pre = x;
-        //			}
-        //			n ^= (1 << pos);
-        //		}
-        //		if (n == 1) ++res;
-        //		return res;
+    int specialArray(vector<int> &nums) {
+        sort(all(nums));
+        n = SZ(nums);
+        int pos = 0;
+        for (int i = 0; i <= 1000; ++i) {
+            while (pos < n && nums[pos] < i) ++pos;
+            if (n - pos == i)
+                return i;
+        }
+        return -1;
     }
 };
 
-void run() {}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = nextInt();
-    while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif

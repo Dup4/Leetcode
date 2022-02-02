@@ -89,72 +89,36 @@ inline ll qpow(ll base, ll n) {
 }
 // head
 constexpr int N = 1e5 + 10;
-constexpr int INF = 0x3f3f3f3f;
 int n;
 
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
+map<int, int> mp;
+
+int dfs(int n) {
+    if (!n)
+        return 0;
+    if (n == 1)
+        return mp[n] = 1;
+    if (mp.count(n))
+        return mp[n];
+    int f = 1 + dfs(n ^ 1);
+    int x = __builtin_ffs(n);
+    if (x <= 30)
+        chmin(f, 1 + dfs(n ^ (1 << x)));
+    return mp[n] = f;
+}
+
 class Solution {
 public:
-    bool isEvenOddTree(TreeNode *root) {
-        vector<vector<int>> vec;
-        queue<TreeNode *> que;
-        que.push(root);
-        while (!que.empty()) {
-            queue<TreeNode *> _que;
-            vector<int> _vec;
-            while (!que.empty()) {
-                TreeNode *rt = que.front();
-                que.pop();
-                _vec.push_back(rt->val);
-                if (rt->left)
-                    _que.push(rt->left);
-                if (rt->right)
-                    _que.push(rt->right);
-            }
-            que = _que;
-            vec.push_back(_vec);
-        }
-        for (int i = 0; i < SZ(vec); ++i) {
-            int f = i & 1 ^ 1;
-            int pre = f ? 0 : INF;
-            for (auto &x : vec[i]) {
-                if ((x & 1) != f)
-                    return false;
-                if (f && x <= pre)
-                    return false;
-                if (!f && x >= pre)
-                    return false;
-                pre = x;
-            }
-        }
-        return true;
+    int minimumOneBitOperations(int n) {
+        mp.clear();
+        return dfs(n);
     }
 };
 
-void run() {}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = nextInt();
-    while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif
