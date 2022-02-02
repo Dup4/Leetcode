@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
+using namespace std;
 #define fi first
 #define se second
 #define SZ(x) int((x).size())
 #define endl "\n"
-using namespace std;
 using db = double;
 using ll = long long;
 using ull = unsigned long long;
@@ -89,66 +89,47 @@ inline ll qpow(ll base, ll n) {
 
 class Solution {
 public:
-#define mkp make_pair
-#define SZ(x) (int(x.size())
-    bool ok(int a, int b, int c) {
-        return (a + 1) / 2 - 1 > b + c;
+    bool gao(string &res, int &a, int &b, int &c, char _a, char _b, char _c) {
+        //	pt(res, res[-2], res[-3], _a);
+        if (SZ(res) > 1 && *(res.end() - 1) == _a && *(res.end() - 2) == _a) {
+            if (b + c == 0)
+                return false;
+            if (b > c) {
+                res += _b;
+                --b;
+            } else {
+                res += _c;
+                --c;
+            }
+        } else {
+            res += _a;
+            --a;
+        }
+        return true;
     }
     string longestDiverseString(int a, int b, int c) {
-        if (!ok(a, b, c) || !ok(b, a, c) || !ok(c, a, b))
-            return "";
         string res = "";
-                vector <pair(int, char>> vec;
-		vec.push_back(mkp(a, 'a'));
-		vec.push_back(mkp(b, 'b'));
-		vec.push_back(mkp(c, 'c'));
-		sort(vec.begin(), vec.end());
-		reverse(vec.begin(), vec.end());
-		for (int i = 0; i < vec[0].first; ++i) {
-            res += vec[0].second;
-		}
-		vec.erase(0);
-		swap(vec[0], vec[1]);
-		while (1) {
-            int ok = 0;
-            for (int i = 2; i < SZ(res); ++i) {
-                if (s[i] == s[i - 1] && s[i] == s[i - 2]) {
-                    ok = 1;
-                    res.insert(i, vec.back().second);
-                    --vec.back().first;
+        while (a + b + c > 0) {
+            int t = max({a, b, c});
+            if (a == t) {
+                if (!gao(res, a, b, c, 'a', 'b', 'c'))
                     break;
-                }
+            } else if (b == t) {
+                if (!gao(res, b, a, c, 'b', 'a', 'c'))
+                    break;
+            } else {
+                if (!gao(res, c, a, b, 'c', 'a', 'b'))
+                    break;
             }
-            if (vec.back().first == 0)
-                vec.pop_back();
-            if (!ok)
-                break;
-		}
-		while (SZ(vec)) {
-            for (int i = 0; i < SZ(res); ++i) {
-                if (s[i] != vec.back().se && s[i + 1] != vec.back().se)
-            }	
-		}
-		return res;
+        }
+        return res;
     }
 };
 
-void run() {
-    int a, b, c;
-    rd(a, b, c);
-    new Solution::longestDiverseString(a, b, c);
-}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    run();
-    //	while (cin >> n) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ":\n";
-    //        run();
-    //    }
     return 0;
 }
+
+#endif

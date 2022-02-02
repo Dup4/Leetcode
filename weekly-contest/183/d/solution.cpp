@@ -87,61 +87,46 @@ inline ll qpow(ll base, ll n) {
 }
 // head
 
+const int INF = 0x3f3f3f3f, N = 1e6 + 10;
+int n;
+vector<int> vec;
+
+int f[N];
+
+int dfs(int cur) {
+    if (cur >= n)
+        return 0;
+    if (f[cur] != -INF)
+        return f[cur];
+    int tot = 0, Max = -INF;
+    for (int i = 0; i < 3 && cur + i < n; ++i) {
+        tot += vec[cur + i];
+        chmax(Max, tot - dfs(cur + i + 1));
+    }
+    //	dbg(cur, Max);
+    return f[cur] = Max;
+}
+
 class Solution {
 public:
-    bool gao(string &res, int &a, int &b, int &c, char _a, char _b, char _c) {
-        //	pt(res, res[-2], res[-3], _a);
-        if (SZ(res) > 1 && *(res.end() - 1) == _a && *(res.end() - 2) == _a) {
-            if (b + c == 0)
-                return false;
-            if (b > c) {
-                res += _b;
-                --b;
-            } else {
-                res += _c;
-                --c;
-            }
-        } else {
-            res += _a;
-            --a;
-        }
-        return true;
-    }
-    string longestDiverseString(int a, int b, int c) {
-        string res = "";
-        while (a + b + c > 0) {
-            int t = max({a, b, c});
-            if (a == t) {
-                if (!gao(res, a, b, c, 'a', 'b', 'c'))
-                    break;
-            } else if (b == t) {
-                if (!gao(res, b, a, c, 'b', 'a', 'c'))
-                    break;
-            } else {
-                if (!gao(res, c, a, b, 'c', 'a', 'b'))
-                    break;
-            }
-        }
-        return res;
+    string stoneGameIII(vector<int> &stoneValue) {
+        vec = stoneValue;
+        n = SZ(vec);
+        for (int i = 0; i <= n + 5; ++i) f[i] = -INF;
+        int t = dfs(0);
+        if (t > 0)
+            return "Alice";
+        else if (t < 0)
+            return "Bob";
+        else
+            return "Tie";
     }
 };
 
-void run() {
-    int a, b, c;
-    rd(a, b, c);
-    pt((new Solution())->longestDiverseString(a, b, c));
-}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    run();
-    //	while (cin >> n) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ":\n";
-    //        run();
-    //    }
     return 0;
 }
+
+#endif
