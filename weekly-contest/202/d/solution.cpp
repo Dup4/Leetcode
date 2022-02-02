@@ -90,44 +90,47 @@ inline ll qpow(ll base, ll n) {
 // head
 constexpr int N = 1e5 + 10;
 // int n;
-int a[N];
+map<int, int> f;
+
+int dfs(int x) {
+    if (x == 0)
+        return 0;
+    if (x == 1)
+        return 1;
+    if (f.count(x))
+        return f[x];
+    int now = x;
+    if (x % 2 == 0)
+        chmin(now, dfs(x / 2) + 1);
+    if (x % 3 == 0)
+        chmin(now, dfs(x / 3) + 1);
+    if (x % 2 == 1)
+        chmin(now, dfs((x - 1) / 2) + 2);
+    if (x % 3 == 1)
+        chmin(now, dfs((x - 1) / 3) + 2);
+    if (x % 3 == 2)
+        chmin(now, dfs((x - 2) / 3) + 3);
+    return f[x] = now;
+}
 
 class Solution {
 public:
-    int minOperations(int n) {
-        if (n == 1)
-            return 0;
-        for (int i = 0; i < n; ++i) {
-            a[i] = 2 * i + 1;
-        }
-        int res = 0;
-        int mid = 0;
-        if (n & 1)
-            mid = a[n / 2];
-        else
-            mid = (a[n / 2] + a[n / 2 - 1]) / 2;
-        for (int i = 0; i < n; ++i) res += abs(a[i] - mid);
-        return res / 2;
+    int minDays(int n) {
+        f.clear();
+        return dfs(n);
+        //	int res = n;
+        //	int it = 1, now = 1;
+        //	while (it < n) {
+        //
+        //	}
+        //	return res;
     }
 };
 
-void run() {
-    pt((new Solution())->);
-}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = 1;
-    // nextInt();
-    while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif
