@@ -88,67 +88,40 @@ inline ll qpow(ll base, ll n) {
     return res;
 }
 // head
-constexpr int N = 1e3 + 10;
-constexpr ll INFLL = 0x3f3f3f3f3f3f3f3f;
-int n, m, a[N];
-ll f[N][N];
-
-ll dfs(int l, int r) {
-    if (f[l][r] != -1)
-        return f[l][r];
-    if (l >= r)
-        return 0ll;
-    if (l + 1 == r)
-        return f[l][r] = a[l] + a[r];
-    ll res = INFLL;
-    ll tot = 0;
-    for (int i = l; i <= r; ++i) {
-        if (i < r)
-            chmin(res, dfs(l, i) + dfs(i + 1, r));
-        tot += a[i];
-    }
-    return f[l][r] = res + tot;
-}
+constexpr int N = 1e5 + 10;
+int f[N];
+map<int, int> g;
 
 class Solution {
 public:
-    int minCost(int _n, vector<int> &cuts) {
-        n = _n;
-        //	m = SZ(cuts);
-        memset(f, -1, sizeof f);
-        int pre = 0;
-        m = 0;
-        sort(all(cuts));
-        for (auto &it : cuts) {
-            a[++m] = it - pre;
-            pre = it;
+    int maxNonOverlapping(vector<int> &nums, int target) {
+        g.clear();
+        int n = SZ(nums);
+        g[0] = 0;
+        int Max = 0;
+        for (int i = 0; i < n; ++i) {
+            f[i + 1] = f[i] + nums[i];
+            int dif = f[i + 1] - target;
+            int now = 0;
+            if (g.count(dif)) {
+                now += g[dif] + 1;
+            }
+            chmax(Max, now);
+            g[f[i + 1]] = Max;
+            // max({Max, g[f[i + 1]], now});
         }
-        a[++m] = n - pre;
-        return dfs(1, m);
+        int res = 0;
+        for (auto &it : g) {
+            chmax(res, it.se);
+        }
+        return res;
     }
 };
 
-void run() {
-    int n, m;
-    rd(n, m);
-    vector<int> vec(m);
-    for (auto &it : vec) rd(it);
-    pt((new Solution())->minCost(n, vec));
-}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = 1;
-    // nextInt();
-    while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif

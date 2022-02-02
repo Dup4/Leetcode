@@ -89,44 +89,38 @@ inline ll qpow(ll base, ll n) {
 }
 // head
 constexpr int N = 1e5 + 10;
-char sta[N];
-int top;
+// int n;
+
+string Invert(string &s) {
+    string res = "";
+    for (auto &ch : s) {
+        res += ((ch - '0') ^ 1) + '0';
+    }
+    return res;
+}
 
 class Solution {
 public:
-    string makeGood(string s) {
-        top = 0;
-        for (auto &ch : s) {
-            sta[++top] = ch;
-            while (top >= 2 && (sta[top] - 'A' == sta[top - 1] - 'a' || sta[top] - 'a' == sta[top - 1] - 'A')) {
-                top -= 2;
-            }
+    char findKthBit(int n, int k) {
+        string s = "0";
+        for (int i = 2; i <= n; ++i) {
+            string t = "";
+            t = s;
+            t += "1";
+            string tmp = Invert(s);
+            reverse(all(tmp));
+            t += tmp;
+            //  t += reverse(all(Invert(s)));
+            s = t;
         }
-        string res = "";
-        for (int i = 1; i <= top; ++i) res += sta[i];
-        return res;
+        return s[k - 1];
     }
 };
 
-void run() {
-    string s;
-    rd(s);
-    pt((new Solution())->makeGood(s));
-}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = 1;
-    // nextInt();
-    while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif

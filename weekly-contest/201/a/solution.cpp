@@ -89,56 +89,29 @@ inline ll qpow(ll base, ll n) {
 }
 // head
 constexpr int N = 1e5 + 10;
-int f[N];
-map<int, int> g;
+char sta[N];
+int top;
 
 class Solution {
 public:
-    int maxNonOverlapping(vector<int> &nums, int target) {
-        g.clear();
-        int n = SZ(nums);
-        g[0] = 0;
-        int Max = 0;
-        for (int i = 0; i < n; ++i) {
-            f[i + 1] = f[i] + nums[i];
-            int dif = f[i + 1] - target;
-            int now = 0;
-            if (g.count(dif)) {
-                now += g[dif] + 1;
+    string makeGood(string s) {
+        top = 0;
+        for (auto &ch : s) {
+            sta[++top] = ch;
+            while (top >= 2 && (sta[top] - 'A' == sta[top - 1] - 'a' || sta[top] - 'a' == sta[top - 1] - 'A')) {
+                top -= 2;
             }
-            chmax(Max, now);
-            g[f[i + 1]] = Max;
-            // max({Max, g[f[i + 1]], now});
         }
-        int res = 0;
-        for (auto &it : g) {
-            chmax(res, it.se);
-        }
+        string res = "";
+        for (int i = 1; i <= top; ++i) res += sta[i];
         return res;
     }
 };
 
-void run() {
-    int n, target;
-    rd(n, target);
-    vector<int> vec(n);
-    for (auto &it : vec) rd(it);
-    pt((new Solution())->maxNonOverlapping(vec, target));
-}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = 1;
-    // nextInt();
-    while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif

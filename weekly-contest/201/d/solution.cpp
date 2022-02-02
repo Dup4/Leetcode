@@ -88,54 +88,50 @@ inline ll qpow(ll base, ll n) {
     return res;
 }
 // head
-constexpr int N = 1e5 + 10;
-// int n;
+constexpr int N = 1e3 + 10;
+constexpr ll INFLL = 0x3f3f3f3f3f3f3f3f;
+int n, m, a[N];
+ll f[N][N];
 
-string Invert(string &s) {
-    string res = "";
-    for (auto &ch : s) {
-        res += ((ch - '0') ^ 1) + '0';
+ll dfs(int l, int r) {
+    if (f[l][r] != -1)
+        return f[l][r];
+    if (l >= r)
+        return 0ll;
+    if (l + 1 == r)
+        return f[l][r] = a[l] + a[r];
+    ll res = INFLL;
+    ll tot = 0;
+    for (int i = l; i <= r; ++i) {
+        if (i < r)
+            chmin(res, dfs(l, i) + dfs(i + 1, r));
+        tot += a[i];
     }
-    return res;
+    return f[l][r] = res + tot;
 }
 
 class Solution {
 public:
-    char findKthBit(int n, int k) {
-        string s = "0";
-        for (int i = 2; i <= n; ++i) {
-            string t = "";
-            t = s;
-            t += "1";
-            string tmp = Invert(s);
-            reverse(all(tmp));
-            t += tmp;
-            //  t += reverse(all(Invert(s)));
-            s = t;
+    int minCost(int _n, vector<int> &cuts) {
+        n = _n;
+        //	m = SZ(cuts);
+        memset(f, -1, sizeof f);
+        int pre = 0;
+        m = 0;
+        sort(all(cuts));
+        for (auto &it : cuts) {
+            a[++m] = it - pre;
+            pre = it;
         }
-        return s[k - 1];
+        a[++m] = n - pre;
+        return dfs(1, m);
     }
 };
 
-void run() {
-    int n, k;
-    rd(n, k);
-    pt((new Solution())->findKthBit(n, k));
-}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = 1;
-    // nextInt();
-    while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif
