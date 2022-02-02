@@ -19,6 +19,9 @@
     },
     "homepage": "https://github.com/Dup4/Leetcode#readme",
     "dependencies": {
-        "mkdocs-render-math-ssr": "^1.0.4"
+        "leetcode-api-typescript": "^1.1.1",
+        "mkdocs-render-math-ssr": "^1.0.4",
+        "ts-node": "^10.4.0",
+        "typescript": "^4.5.5"
     }
 }
