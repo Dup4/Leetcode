@@ -92,32 +92,26 @@ constexpr int N = 1e5 + 10;
 int n, res;
 string s;
 
-void dfs(vector<int> vec, int cur) {
+void dfs(unordered_set<string> mp, string t, int cur) {
+    //<string, int> mp, string t, int cur) {
     if (cur == n) {
-        int now = 0;
-        reverse(all(vec));
-        map<string, int> mp;
-        string t = "";
-        for (int i = 0; i < n; ++i) {
-            t += s[i];
-            if (!vec.empty() && vec.back() == i) {
-                if (mp.count(t))
-                    return;
-                mp[t] = 1;
-                t = "";
-                vec.pop_back();
-            }
-        }
-        if (SZ(t)) {
-            if (mp.count(t))
-                return;
-            mp[t] = 1;
-        }
         chmax(res, SZ(mp));
     } else {
-        dfs(vec, cur + 1);
-        vec.push_back(cur);
-        dfs(vec, cur + 1);
+        if (cur == n - 1) {
+            t += s[cur];
+            if (mp.find(t) == mp.end()) {
+                chmax(res, SZ(mp) + 1);
+            }
+        } else {
+            if (SZ(mp) + n - cur < res)
+                return;
+            t += s[cur];
+            dfs(mp, t, cur + 1);
+            if (mp.find(t) == mp.end()) {
+                mp.insert(t);
+                dfs(mp, "", cur + 1);
+            }
+        }
     }
 }
 
@@ -127,26 +121,15 @@ public:
         s = _s;
         n = SZ(s);
         res = 1;
-        vector<int> vec;
-        dfs(vec, 0);
+        dfs(unordered_set<string>(), "", 0);
         return res;
     }
 };
 
-void run() {}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = nextInt();
-    while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif

@@ -88,60 +88,51 @@ inline ll qpow(ll base, ll n) {
     return res;
 }
 // head
-constexpr int N = 1e5 + 10;
-int n, res;
-string s;
-
-void dfs(vector<string> vec, int cur) {
-    if (cur == n) {
-        int now = SZ(vec);
-        sort(all(vec));
-        vec.erase(unique(all(vec)), vec.end());
-        if (now == SZ(vec))
-            chmax(res, now);
-    } else {
-        vector<string> tmp(vec), _tmp(vec);
-        if (SZ(tmp)) {
-            tmp.back() += s[cur];
-            dfs(tmp, cur + 1);
-        }
-        string t = "";
-        t += s[cur];
-        _tmp.push_back(t);
-        dfs(_tmp, cur + 1);
-    }
-}
+constexpr int N = 1e2 + 10;
+constexpr int INF = 0x3f3f3f3f;
+int n, m, f[N], g[2][1 << 13];
 
 class Solution {
 public:
-    int maxUniqueSplit(string _s) {
-        s = _s;
-        n = SZ(s);
-        res = 1;
-        dfs(vector<string>(), 0);
+    int connectTwoGroups(vector<vector<int>> &cost) {
+        n = SZ(cost);
+        m = SZ(cost[0]);
+        int res = INF;
+        memset(f, 0x3f, sizeof f);
+        memset(g, 0x3f, sizeof g);
+        g[1][0] = 0;
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < m; ++j) {
+                chmin(f[j], cost[i][j]);
+            }
+        }
+        for (int i = 0; i < n; ++i) {
+            int p = i & 1;
+            memset(g[p], 0x3f, sizeof g[p]);
+            for (int j = 0; j < m; ++j) {
+                for (int S = 0; S < 1 << m; ++S) {
+                    chmin(g[p][S | (1 << j)], g[p ^ 1][S] + cost[i][j]);
+                }
+            }
+        }
+        int p = (n - 1) & 1;
+        for (int S = 0; S < 1 << m; ++S) {
+            int add = 0;
+            for (int i = 0; i < m; ++i) {
+                if (!((S >> i) & 1)) {
+                    add += f[i];
+                }
+            }
+            chmin(res, g[p][S] + add);
+        }
         return res;
     }
 };
 
-void run() {
-    string s;
-    cin >> s;
-    pt((new Solution())->maxUniqueSplit(s));
-}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = 1;
-    // nextInt();
-    while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif

@@ -88,72 +88,62 @@ inline ll qpow(ll base, ll n) {
     return res;
 }
 // head
-constexpr int N = 1e5 + 10;
-int n, res;
-string s;
+constexpr int N = 1e2 + 10;
+int n, m;
+ll f[N][N][2];
 
-void dfs(vector<string> vec, int cur) {
-    if (cur == n) {
-        int now = SZ(vec);
-        sort(all(vec));
-        vec.erase(unique(all(vec)), vec.end());
-        if (now == SZ(vec))
-            chmax(res, now);
-    } else {
-        vector<string> tmp(vec), _tmp(vec);
-        if (SZ(tmp)) {
-            tmp.back() += s[cur];
-            dfs(tmp, cur + 1);
-        }
-        string t = "";
-        t += s[cur];
-        _tmp.push_back(t);
-        dfs(_tmp, cur + 1);
-    }
+int Move[][2] = {-1, 0, 0, -1};
+
+bool ok(int x, int y) {
+    if (x < 0 || x >= n || y < 0 || y >= m)
+        return false;
+    return true;
 }
 
 class Solution {
 public:
-    int maxUniqueSplit(string _s) {
-        s = _s;
-        map<string, int> mp;
-        int res = 0;
-        string t = "";
-        for (auto &ch : s) {
-            t += ch;
-            if (mp.count(t) == 0) {
-                ++res;
-                mp[t] = 1;
-                t = "";
+    int maxProductPath(vector<vector<int>> &grid) {
+        n = SZ(grid);
+        m = SZ(grid[0]);
+        memset(f, -1, sizeof f);
+        if (grid[0][0] >= 0)
+            f[0][0][0] = grid[0][0];
+        else
+            f[0][0][1] = abs(grid[0][0]);
+        int zero = grid[0][0] == 0;
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < m; ++j) {
+                zero += grid[i][j] == 0;
+                if (i || j) {
+                    int p = (grid[i][j] < 0);
+                    for (int k = 0; k < 2; ++k) {
+                        int nx = i + Move[k][0];
+                        int ny = j + Move[k][1];
+                        if (ok(nx, ny) && grid[nx][ny] != 0) {
+                            if (f[nx][ny][0] != -1) {
+                                chmax(f[i][j][p], f[nx][ny][0] * abs(grid[i][j]));
+                            }
+                            if (f[nx][ny][1] != -1) {
+                                chmax(f[i][j][p ^ 1], f[nx][ny][1] * abs(grid[i][j]));
+                            }
+                        }
+                    }
+                }
             }
         }
+        int res = -1;
+        if (zero)
+            res = 0;
+        if (f[n - 1][m - 1][0] != -1)
+            res = f[n - 1][m - 1][0] % mod;
         return res;
-        //	n = SZ(s);
-        //	res = 1;
-        //	dfs(vector<string>(), 0);
-        //	return res;
     }
 };
 
-void run() {
-    string s;
-    cin >> s;
-    pt((new Solution())->maxUniqueSplit(s));
-}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = 1;
-    // nextInt();
-    while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif
