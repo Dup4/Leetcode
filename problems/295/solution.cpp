@@ -1,9 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define endl "\n"
 #define fi first
 #define se second
-#define SZ(x) int((x).size())
-#define endl "\n"
+#define SZ(x) ((int)(x).size())
+#define mkp make_pair
+#define all(x) (x).begin(), (x).end()
 using db = double;
 using ll = long long;
 using ull = unsigned long long;
@@ -86,53 +88,65 @@ inline ll qpow(ll base, ll n) {
     return res;
 }
 // head
+constexpr int N = 1e5 + 10;
 int n;
 
-int calc(int x) {
-    int res = 0;
-    while (x) {
-        res += x % 10;
-        x /= 10;
-    }
-    return res;
-}
-
-class Solution {
+class MedianFinder {
 public:
-    int countLargestGroup(int _n) {
-        n = _n;
-        map<int, vector<int>> mp;
-        int Max = 0;
-        for (int i = 1; i <= n; ++i) {
-            int t = calc(i);
-            mp[t].push_back(i);
-            chmax(Max, SZ(mp[t]));
+    /** initialize your data structure here. */
+    MedianFinder() {}
+
+    priority_queue<int> big;
+    priority_queue<int, vector<int>, greater<int>> low;
+
+    void addNum(int num) {
+        if (big.empty() && low.empty())
+            big.push(num);
+        else {
+            if (!big.empty()) {
+                if (num <= big.top())
+                    big.push(num);
+                else
+                    low.push(num);
+            } else {
+                if (num >= low.top())
+                    low.push(num);
+                else
+                    big.push(num);
+            }
         }
-        int res = 0;
-        for (auto &it : mp)
-            if (SZ(it.se) == Max)
-                ++res;
+    }
+
+    double findMedian() {
+        while (SZ(big) > SZ(low)) {
+            low.push(big.top());
+            big.pop();
+        }
+        while (SZ(low) - 1 > SZ(big)) {
+            big.push(low.top());
+            low.pop();
+        }
+        db res = 0;
+        if (SZ(big) != SZ(low)) {
+            res = low.top();
+        } else {
+            res = (big.top() + low.top()) * 1.0 / 2;
+        }
         return res;
     }
 };
 
-void run() {
-    rd(n);
-    pt((new Solution)->countLargestGroup(n));
-}
+/**
+ * Your MedianFinder object will be instantiated and called as such:
+ * MedianFinder* obj = new MedianFinder();
+ * obj->addNum(num);
+ * double param_2 = obj->findMedian();
+ */
+
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    //	int _T = nextInt();
-    //	while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    run();
     return 0;
 }
+
+#endif

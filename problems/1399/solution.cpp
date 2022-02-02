@@ -86,42 +86,40 @@ inline ll qpow(ll base, ll n) {
     return res;
 }
 // head
+int n;
 
-int cnt[30];
+int calc(int x) {
+    int res = 0;
+    while (x) {
+        res += x % 10;
+        x /= 10;
+    }
+    return res;
+}
 
 class Solution {
 public:
-    bool canConstruct(string s, int k) {
-        int len = SZ(s);
-        memset(cnt, 0, sizeof cnt);
-        for (auto &c : s) ++cnt[c - 'a'];
-        if (len < k)
-            return false;
-        int t = 0;
-        for (int i = 0; i < 26; ++i) t += cnt[i] % 2;
-        return t <= k;
+    int countLargestGroup(int _n) {
+        n = _n;
+        map<int, vector<int>> mp;
+        int Max = 0;
+        for (int i = 1; i <= n; ++i) {
+            int t = calc(i);
+            mp[t].push_back(i);
+            chmax(Max, SZ(mp[t]));
+        }
+        int res = 0;
+        for (auto &it : mp)
+            if (SZ(it.se) == Max)
+                ++res;
+        return res;
     }
 };
 
-void run() {
-    string s;
-    int k;
-    rd(s, k);
-    pt((new Solution)->canConstruct(s, k));
-}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    //	int _T = nextInt();
-    //	while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    run();
     return 0;
 }
+
+#endif

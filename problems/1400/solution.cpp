@@ -1,11 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define endl "\n"
 #define fi first
 #define se second
-#define SZ(x) ((int)(x).size())
-#define mkp make_pair
-#define all(x) (x).begin(), (x).end()
+#define SZ(x) int((x).size())
+#define endl "\n"
 using db = double;
 using ll = long long;
 using ull = unsigned long long;
@@ -88,75 +86,27 @@ inline ll qpow(ll base, ll n) {
     return res;
 }
 // head
-constexpr int N = 1e5 + 10;
-int n;
 
-class MedianFinder {
+int cnt[30];
+
+class Solution {
 public:
-    /** initialize your data structure here. */
-    MedianFinder() {}
-
-    priority_queue<int> big;
-    priority_queue<int, vector<int>, greater<int>> low;
-
-    void addNum(int num) {
-        if (big.empty() && low.empty())
-            big.push(num);
-        else {
-            if (!big.empty()) {
-                if (num <= big.top())
-                    big.push(num);
-                else
-                    low.push(num);
-            } else {
-                if (num >= low.top())
-                    low.push(num);
-                else
-                    big.push(num);
-            }
-        }
-    }
-
-    double findMedian() {
-        while (SZ(big) > SZ(low)) {
-            low.push(big.top());
-            big.pop();
-        }
-        while (SZ(low) - 1 > SZ(big)) {
-            big.push(low.top());
-            low.pop();
-        }
-        db res = 0;
-        if (SZ(big) != SZ(low)) {
-            res = low.top();
-        } else {
-            res = (big.top() + low.top()) * 1.0 / 2;
-        }
-        return res;
+    bool canConstruct(string s, int k) {
+        int len = SZ(s);
+        memset(cnt, 0, sizeof cnt);
+        for (auto &c : s) ++cnt[c - 'a'];
+        if (len < k)
+            return false;
+        int t = 0;
+        for (int i = 0; i < 26; ++i) t += cnt[i] % 2;
+        return t <= k;
     }
 };
 
-/**
- * Your MedianFinder object will be instantiated and called as such:
- * MedianFinder* obj = new MedianFinder();
- * obj->addNum(num);
- * double param_2 = obj->findMedian();
- */
-
-void run() {}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = nextInt();
-    while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif

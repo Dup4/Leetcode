@@ -86,37 +86,48 @@ inline ll qpow(ll base, ll n) {
     return res;
 }
 // head
+int n;
 
-ll dis(l x, ll y, ll x1, ll y1) {
-    return (x - x1) * (x - x1) + (y - y1) * (y - y1);
+vector<int> vec;
+
+int calc(vector<int> &vec) {
+    sort(vec.begin(), vec.end());
+    int res = 0;
+    int cnt = 1;
+    for (auto &it : vec) {
+        res += it * cnt;
+        ++cnt;
+    }
+    return res;
 }
 
 class Solution {
 public:
-    bool checkOverlap(int radius, int x_center, int y_center, int x1, int y1, int x2, int y2) {
-        for (int i = x1; i <= x2; ++i) {
+    int maxSatisfaction(vector<int> &satisfaction) {
+        vec = satisfaction;
+        n = SZ(vec);
+        sort(vec.begin(), vec.end());
+        vector<int> A, B;
+        for (auto &it : vec) {
+            if (it >= 0)
+                A.push_back(it);
+            else
+                B.push_back(it);
         }
+        reverse(B.begin(), B.end());
+        int res = calc(A);
+        for (auto &it : B) {
+            A.push_back(it);
+            chmax(res, calc(A));
+        }
+        return res;
     }
 };
 
-void run() {
-    int r, x, y, x1, y1, x2, y2;
-    rd(r, x, y, x1, y1, x2, y2);
-    pt((new Solution)->checkOverlap(r, x, y, x1, y1, x2, y2));
-}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    //	int _T = nextInt();
-    //	while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    run();
     return 0;
 }
+
+#endif
