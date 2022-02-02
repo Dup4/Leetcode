@@ -1,0 +1,24 @@
+{
+    "name": "leetcode",
+    "version": "1.0.0",
+    "description": "leetcode",
+    "directories": {
+        "doc": "docs"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Dup4/Leetcode.git"
+    },
+    "author": "Dup4",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Dup4/Leetcode/issues"
+    },
+    "homepage": "https://github.com/Dup4/Leetcode#readme",
+    "dependencies": {
+        "mkdocs-render-math-ssr": "^1.0.4"
+    }
+}

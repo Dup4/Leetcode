@@ -1,28 +1,12 @@
-*
+.DS_Store
+.vscode/
 
-!*/
-!README.md
-!lc-gen
-!.gitignore
-!.editorconfig
-!.clang-format
-!leetcode.code-workspace
-
-!*.yml
-
-!*.png
-
-!*.in
-!*.out
-
-!*.sh
-!*.h
-!*.c
-!*.hpp
-!*.cpp
-!*.py
-!*.go
-!*.java
-!*.js
+*.cpp.out
 
 env.sh
+
+/site
+/venv
+/node_modules
+
+yarn-error.log
