@@ -86,52 +86,44 @@ inline ll qpow(ll base, ll n) {
     return res;
 }
 // head
-const int N = 1e5 + 10;
-string s;
-ll k, f[N];
+constexpr int N = 1e5 + 10;
+
+int n, k;
+
+vector<string> vec;
+void dfs(int cur, char pre, string now) {
+    if (cur == n) {
+        vec.push_back(now);
+        return;
+    }
+    for (auto &it : {'a', 'b', 'c'}) {
+        if (it != pre) {
+            string tmp = now;
+            tmp += it;
+            dfs(cur + 1, it, tmp);
+            if (SZ(vec) > k)
+                return;
+        }
+    }
+}
 
 class Solution {
 public:
-    int numberOfArrays(string s, int k) {
-        //		cout << s << " " << k << endl;
-        int n = SZ(s);
-        for (int i = 0; i <= n; ++i) f[i] = 0;
-        f[0] = 1;
-        for (int i = 1; i <= n; ++i) {
-            ll num = 0, bit = 1;
-            for (int j = i; j >= max(1, i - 12); --j) {
-                num = bit * (s[j - 1] - '0') + num;
-                bit *= 10;
-                //	dbg(i, j, num, (s[j] - '0'), s[j]);
-                if (s[j - 1] != '0' && num >= 1 && num <= k) {
-                    // dbg(i, j, num);
-                    chadd(f[i], f[j - 1]);
-                }
-                if (num > k)
-                    break;
-            }
-        }
-        return f[n];
+    string getHappyString(int _n, int _k) {
+        n = _n, k = _k;
+        vec.clear();
+        dfs(0, 0, "");
+        sort(vec.begin(), vec.end());
+        if (k > SZ(vec))
+            return "";
+        return vec[k - 1];
     }
 };
 
-void run() {
-    rd(s, k);
-    pt((new Solution)->numberOfArrays(s, k));
-}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    //	int _T = nextInt();
-    //	while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    run();
     return 0;
 }
+
+#endif
