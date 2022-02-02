@@ -88,40 +88,35 @@ inline ll qpow(ll base, ll n) {
     return res;
 }
 // head
-constexpr int N = 1e5 + 10;
-int n;
+constexpr int N = 1e2 + 10;
+int n, d[N], g[N][N];
 
 class Solution {
 public:
-    int maxDepth(string s) {
-        stack<int> sta;
+    int maximalNetworkRank(int _n, vector<vector<int>> &roads) {
+        n = _n;
+        memset(d, 0, sizeof d);
+        memset(g, 0, sizeof g);
+        for (auto &it : roads) {
+            int u = it[0], v = it[1];
+            ++d[u];
+            ++d[v];
+            g[u][v] = g[v][u] = 1;
+        }
         int res = 0;
-        for (int i = 0; i < SZ(s); ++i) {
-            if (s[i] == '(') {
-                sta.push(i);
-                chmax(res, SZ(sta));
-            } else if (s[i] == ')') {
-                sta.pop();
+        for (int i = 0; i < n; ++i) {
+            for (int j = i + 1; j < n; ++j) {
+                chmax(res, d[i] + d[j] - g[i][j]);
             }
         }
         return res;
     }
 };
 
-void run() {}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = nextInt();
-    while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif
