@@ -35,6 +35,10 @@
             "filesystem": "cpp",
             "iosfwd": "cpp",
             "iterator": "cpp"
-        }
+        },
+        "cSpell.words": [
+            "leetcode",
+            "mkdocs"
+        ]
     },
 }
