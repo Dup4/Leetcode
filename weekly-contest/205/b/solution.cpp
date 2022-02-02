@@ -90,40 +90,42 @@ inline ll qpow(ll base, ll n) {
 // head
 constexpr int N = 1e5 + 10;
 int n;
+int cnt[N];
+
+int sqr(ll x) {
+    int y = sqrt(x);
+    for (int i = max(1, y - 5); i <= y + 5; ++i) {
+        if (1ll * i * i == x)
+            return i;
+    }
+    return 0;
+}
+
+int gao(vector<int> nums1, vector<int> nums2) {
+    memset(cnt, 0, sizeof cnt);
+    for (auto &it : nums1) ++cnt[it];
+    int res = 0;
+    int n = SZ(nums2);
+    for (int i = 0; i < n; ++i) {
+        for (int j = i + 1; j < n; ++j) {
+            res += cnt[sqr(1ll * nums2[i] * nums2[j])];
+        }
+    }
+    return res;
+}
 
 class Solution {
 public:
-    string modifyString(string s) {
-        n = SZ(s);
-        for (int i = 0; i < n; ++i) {
-            if (s[i] == '?') {
-                for (int j = 0; j < 26; ++j) {
-                    if (i && j == s[i - 1] - 'a')
-                        continue;
-                    if (i < n - 1 && j == s[i + 1] - 'a')
-                        continue;
-                    s[i] = j + 'a';
-                }
-            }
-        }
-        return s;
+    int numTriplets(vector<int> &nums1, vector<int> &nums2) {
+        int res = gao(nums1, nums2) + gao(nums2, nums1);
+        return res;
     }
 };
 
-void run() {}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = nextInt();
-    //	while (_T--) run();
-    for (int kase = 1; kase <= _T; ++kase) {
-        cout << "Case #" << kase << ": ";
-        run();
-    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif

@@ -90,46 +90,76 @@ inline ll qpow(ll base, ll n) {
 // head
 constexpr int N = 1e5 + 10;
 int n;
-int f[N][30];
+vector<vector<int>> edges;
+
+struct UFS {
+    int fa[N], rk[N];
+    void init(int n) {
+        memset(fa, 0, sizeof(fa[0]) * (n + 5));
+        memset(rk, 0, sizeof(rk[0]) * (n + 5));
+    }
+    int find(int x) {
+        return fa[x] == 0 ? x : fa[x] = find(fa[x]);
+    }
+    bool merge(int x, int y) {
+        int fx = find(x), fy = find(y);
+        if (fx != fy) {
+            if (rk[fx] > rk[fy])
+                swap(fx, fy);
+            fa[fx] = fy;
+            if (rk[fx] == rk[fy])
+                ++rk[fy];
+            return true;
+        }
+        return false;
+    }
+    bool same(int x, int y) {
+        return find(x) == find(y);
+    }
+} ufs[3];
+
+int gao() {
+    ufs[0].init(n);
+    ufs[1].init(n);
+    ufs[2].init(n);
+    int res = 0;
+    for (auto &it : edges) {
+        int tp = it[0], u = it[1], v = it[2];
+        if (tp == 3) {
+            res += ufs[0].merge(u, v) ^ 1;
+        }
+    }
+    ufs[1] = ufs[2] = ufs[0];
+    for (int i = 1; i <= 2; ++i) {
+        for (auto &it : edges) {
+            int tp = it[0], u = it[1], v = it[2];
+            if (tp == i) {
+                res += ufs[i].merge(u, v) ^ 1;
+            }
+        }
+        int cnt = 0;
+        for (int j = 1; j <= n; ++j) {
+            cnt += ufs[i].fa[j] == 0;
+        }
+        if (cnt > 1)
+            return -1;
+    }
+    return res;
+}
 
 class Solution {
 public:
-    int minCost(string s, vector<int> &cost) {
-        n = SZ(s);
-        memset(f, 0x3f, sizeof f);
-        memset(f[0], 0, sizeof f[0]);
-        for (int i = 1; i <= n; ++i) {
-            int ch = s[i - 1] - 'a';
-            int fee = cost[i - 1];
-            for (int j = 0; j < 26; ++j) {
-                if (j != ch) {
-                    chmin(f[i][ch], f[i - 1][j]);
-                    chmin(f[i][j], f[i - 1][j] + fee);
-                } else {
-                    chmin(f[i][j], f[i - 1][j] + fee);
-                }
-            }
-        }
-        int res = 2e9;
-        for (int i = 0; i < 26; ++i) chmin(res, f[n][i]);
-        return res;
+    int maxNumEdgesToRemove(int _n, vector<vector<int>> &_edges) {
+        n = _n;
+        edges = _edges;
+        return gao();
     }
 };
 
-void run() {}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = nextInt();
-    //	while (_T--) run();
-    for (int kase = 1; kase <= _T; ++kase) {
-        cout << "Case #" << kase << ": ";
-        run();
-    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif
