@@ -88,76 +88,37 @@ inline ll qpow(ll base, ll n) {
     return res;
 }
 // head
-constexpr int N = 1e2 + 10;
-int n, m;
-vector<vector<int>> heights;
-int vis[N][N];
-
-int Move[][2] = {-1, 0, 1, 0, 0, 1, 0, -1};
-
-bool valid(int x, int y) {
-    if (x < 0 || x >= n || y < 0 || y >= m)
-        return false;
-    return true;
-}
-
-bool ok(int xx) {
-    memset(vis, 0, sizeof vis);
-    queue<pII> que;
-    que.push(pII(0, 0));
-    while (!que.empty()) {
-        pII front = que.front();
-        que.pop();
-        int x = front.fi;
-        int y = front.se;
-        if (x == n - 1 && y == m - 1)
-            return true;
-        for (int i = 0; i < 4; ++i) {
-            int _x = x + Move[i][0];
-            int _y = y + Move[i][1];
-            if (valid(_x, _y) && vis[_x][_y] == 0 && abs(heights[_x][_y] - heights[x][y]) <= xx) {
-                que.push(pII(_x, _y));
-                vis[_x][_y] = 1;
-            }
-        }
-    }
-    return false;
-}
+constexpr int N = 1e5 + 10;
+int n;
 
 class Solution {
 public:
-    int minimumEffortPath(vector<vector<int>> &_heights) {
-        heights = _heights;
-        n = heights.size();
-        m = heights[0].size();
-        int l = 0, r = 1e6, res = 1e6;
-        while (r - l >= 0) {
-            int mid = (l + r) >> 1;
-            if (ok(mid)) {
-                res = mid;
-                r = mid - 1;
-            } else {
-                l = mid + 1;
+    char slowestKey(vector<int> &releaseTimes, string keysPressed) {
+        n = releaseTimes.size();
+        vector<int> vec(220, 0);
+        int pre = 0;
+        for (int i = 0; i < n; ++i) {
+            int t = releaseTimes[i] - pre;
+            int ch = keysPressed[i];
+            chmax(vec[ch], t);
+            pre = releaseTimes[i];
+        }
+        int Max = 0;
+        char ch = 'z';
+        for (int i = 'z'; i >= 'a'; --i) {
+            if (vec[i] > Max) {
+                Max = vec[i];
+                ch = i;
             }
         }
-        return res;
+        return ch;
     }
 };
 
-void run() {}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = nextInt();
-    while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif
