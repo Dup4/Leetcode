@@ -88,44 +88,50 @@ inline ll qpow(ll base, ll n) {
     return res;
 }
 // head
-constexpr int N = 1e5 + 10;
+constexpr int N = 5e2 + 10;
 // int n;
+int a[N], sum[N], f[N][N];
+
+int dfs(int l, int r) {
+    if (l >= r)
+        return 0;
+    if (f[l][r] != -1)
+        return f[l][r];
+    int tot = sum[r] - sum[l - 1];
+    int now = 0;
+    int Max = 0;
+    for (int i = l; i <= r; ++i) {
+        now += a[i];
+        int oth = tot - now;
+        if (now < oth) {
+            chmax(Max, dfs(l, i) + now);
+        } else if (now == oth) {
+            chmax(Max, dfs(l, i) + now);
+            chmax(Max, dfs(i + 1, r) + oth);
+        } else {
+            chmax(Max, dfs(i + 1, r) + oth);
+        }
+    }
+    return f[l][r] = Max;
+}
 
 class Solution {
 public:
-    int maxCoins(vector<int> &piles) {
-        int n = SZ(piles);
-        sort(all(piles));
-        int sz = n / 3;
-        int res = 0;
-        while (sz--) {
-            int a = piles.back();
-            piles.pop_back();
-            int b = piles.back();
-            piles.pop_back();
-            res += b;
+    int stoneGameV(vector<int> &stoneValue) {
+        int n = SZ(stoneValue);
+        for (int i = 0; i < n; ++i) {
+            a[i + 1] = stoneValue[i];
+            sum[i + 1] = sum[i] + a[i + 1];
         }
-        return res;
+        memset(f, -1, sizeof f);
+        return dfs(1, n);
     }
 };
 
-void run() {
-    pt((new Solution)->);
-}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = 1;
-    // nextInt();
-    while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif

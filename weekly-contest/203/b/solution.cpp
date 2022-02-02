@@ -90,58 +90,29 @@ inline ll qpow(ll base, ll n) {
 // head
 constexpr int N = 1e5 + 10;
 // int n;
-int cnt[N];
 
 class Solution {
 public:
-    vector<int> mostVisited(int n, vector<int> &rounds) {
-        for (int i = 0; i <= n; ++i) cnt[i] = 0;
-        int m = SZ(rounds);
-        int i = 1;
-        int pos = rounds[0] - 1;
-        //	++cnt[pos];
-        while (i < m) {
-            ++pos;
-            ++cnt[pos];
-            if (pos == rounds[i])
-                ++i;
-            //		pt(i, pos);
-            if (pos == n)
-                pos = 0;
-        }
-        vector<int> res;
-        int Max = 0;
-        for (int i = 1; i <= n; ++i) {
-            if (cnt[i] == Max) {
-                res.push_back(i);
-            } else if (cnt[i] > Max) {
-                res.clear();
-                //	pt(i);
-                res.push_back(i);
-                Max = cnt[i];
-            }
+    int maxCoins(vector<int> &piles) {
+        int n = SZ(piles);
+        sort(all(piles));
+        int sz = n / 3;
+        int res = 0;
+        while (sz--) {
+            int a = piles.back();
+            piles.pop_back();
+            int b = piles.back();
+            piles.pop_back();
+            res += b;
         }
         return res;
     }
 };
 
-void run() {
-    pt((new Solution)->);
-}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = 1;
-    // nextInt();
-    while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif
