@@ -15,7 +15,7 @@ cpp_suffix="cpp"
 cpp_out_suffix="cpp.out"
 
 set -x
-g++ -o "${filename}.${cpp_out_suffix}" "${filename}.${cpp_suffix}" -std=c++17 -O2 -W -Wall -DLOCAL -I"${TOP_DIR}/template"
+g++ -o "${filename}.${cpp_out_suffix}" "${filename}.${cpp_suffix}" -std=c++17 -O2 -W -Wall -DLOCAL -I"${TOP_DIR}/../template"
 set +x
 
 if [[ -f "${filename}.${cpp_out_suffix}" ]]; then

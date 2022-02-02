@@ -15,7 +15,7 @@ fi
 template_name="template.cpp"
 solution_name="solution"
 
-template_path="${TOP_DIR}"/template/"${template_name}"
+template_path="${TOP_DIR}"/../template/"${template_name}"
 template_suffix=$(echo "$template_path" | awk -F "." '{print $NF}')
 
 function generate_template() {
