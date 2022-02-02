@@ -13,18 +13,18 @@ using pII = pair<int, int>;
 using pLL = pair<ll, ll>;
 constexpr int mod = 1e9 + 7;
 template <class T1, class T2>
-inline void chadd(T1& x, T2 y, int Mod = mod) {
+inline void chadd(T1 &x, T2 y, int Mod = mod) {
     x += y;
     while (x >= Mod) x -= Mod;
     while (x < 0) x += Mod;
 }
 template <class T1, class T2>
-inline void chmax(T1& x, T2 y) {
+inline void chmax(T1 &x, T2 y) {
     if (x < y)
         x = y;
 }
 template <class T1, class T2>
-inline void chmin(T1& x, T2 y) {
+inline void chmin(T1 &x, T2 y) {
     if (x > y)
         x = y;
 }
@@ -35,7 +35,7 @@ inline int nextInt() {
 }
 void rd() {}
 template <class T, class... Ts>
-void rd(T& arg, Ts&... args) {
+void rd(T &arg, Ts &...args) {
     cin >> arg;
     rd(args...);
 }
@@ -48,31 +48,31 @@ void err() {
     cout << "\033[39;0m" << endl;
 }
 template <class T, class... Ts>
-void err(const T& arg, const Ts&... args) {
+void err(const T &arg, const Ts &...args) {
     cout << arg << ' ';
     err(args...);
 }
 template <template <typename...> class T, typename t, typename... A>
-void err(const T<t>& arg, const A&... args) {
-    for (auto& v : arg) cout << v << ' ';
+void err(const T<t> &arg, const A &...args) {
+    for (auto &v : arg) cout << v << ' ';
     err(args...);
 }
 void ptt() {
     cout << endl;
 }
 template <class T, class... Ts>
-void ptt(const T& arg, const Ts&... args) {
+void ptt(const T &arg, const Ts &...args) {
     cout << ' ' << arg;
     ptt(args...);
 }
 template <class T, class... Ts>
-void pt(const T& arg, const Ts&... args) {
+void pt(const T &arg, const Ts &...args) {
     cout << arg;
     ptt(args...);
 }
 void pt() {}
 template <template <typename...> class T, typename t, typename... A>
-void pt(const T<t>& arg, const A&... args) {
+void pt(const T<t> &arg, const A &...args) {
     for (int i = 0, sze = arg.size(); i < sze; ++i) cout << arg[i] << " \n"[i == sze - 1];
     pt(args...);
 }
@@ -90,38 +90,58 @@ inline ll qpow(ll base, ll n) {
 // head
 constexpr int N = 1e5 + 10;
 int n;
+int x, y;
+ll f[50][50];
+
+void init() {
+    memset(f, 0, sizeof f);
+    for (int i = 0; i < 50; ++i) f[i][0] = f[i][i] = 1;
+    for (int i = 1; i < 50; ++i) {
+        for (int j = 1; j < 50; ++j) {
+            f[i][j] = f[i - 1][j] + f[i - 1][j - 1];
+        }
+    }
+}
 
 class Solution {
 public:
-    bool canFormArray(vector<int>& arr, vector<vector<int>>& pieces) {
-        map<int, int> mp;
-        for (int i = 0; i < SZ(arr); ++i) {
-            mp[arr[i]] = i;
-        }
-        for (auto vec : pieces) {
-            for (int i = 1; i < SZ(vec); ++i) {
-                if (mp[vec[i]] != mp[vec[i - 1]] + 1)
-                    return false;
+    string kthSmallestPath(vector<int> &destination, ll k) {
+        init();
+        x = destination[0];
+        y = destination[1];
+        swap(x, y);
+        n = x + y;
+        string res = "";
+        int _x = x, _y = y;
+        for (int i = 1; i <= n; ++i) {
+            if (!_x) {
+                res += 'V';
+                _y -= 1;
+            } else {
+                if (_y) {
+                    ll now = f[n - i][_x - 1];
+                    if (now < k) {
+                        k -= now;
+                        res += 'V';
+                        _y -= 1;
+                    } else {
+                        res += 'H';
+                        _x -= 1;
+                    }
+                } else {
+                    res += 'H';
+                    _x -= 1;
+                }
             }
         }
-        return true;
+        return res;
     }
 };
 
-void run() {}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = nextInt();
-    while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif

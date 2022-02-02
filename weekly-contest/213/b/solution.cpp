@@ -90,68 +90,28 @@ inline ll qpow(ll base, ll n) {
 // head
 constexpr int N = 1e5 + 10;
 int n;
-int x, y;
-ll f[50][50];
-
-void init() {
-    memset(f, 0, sizeof f);
-    for (int i = 0; i < 50; ++i) f[i][0] = f[i][i] = 1;
-    for (int i = 1; i < 50; ++i) {
-        for (int j = 1; j < 50; ++j) {
-            f[i][j] = f[i - 1][j] + f[i - 1][j - 1];
-        }
-    }
-}
+int f[N][10];
 
 class Solution {
 public:
-    string kthSmallestPath(vector<int> &destination, ll k) {
-        init();
-        x = destination[0];
-        y = destination[1];
-        swap(x, y);
-        n = x + y;
-        string res = "";
-        int _x = x, _y = y;
-        for (int i = 1; i <= n; ++i) {
-            if (!_x) {
-                res += 'V';
-                _y -= 1;
-            } else {
-                if (_y) {
-                    ll now = f[n - i][_x - 1];
-                    if (now < k) {
-                        k -= now;
-                        res += 'V';
-                        _y -= 1;
-                    } else {
-                        res += 'H';
-                        _x -= 1;
-                    }
-                } else {
-                    res += 'H';
-                    _x -= 1;
+    int countVowelStrings(int n) {
+        memset(f, 0, sizeof f);
+        f[0][0] = 1;
+        for (int i = 1; i <= n + 1; ++i) {
+            for (int j = 1; j <= 5; ++j) {
+                for (int k = 0; k <= j; ++k) {
+                    f[i][j] += f[i - 1][k];
                 }
             }
         }
-        return res;
+        return f[n + 1][5];
     }
 };
 
-void run() {}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = nextInt();
-    while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif

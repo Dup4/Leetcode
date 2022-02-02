@@ -90,38 +90,51 @@ inline ll qpow(ll base, ll n) {
 // head
 constexpr int N = 1e5 + 10;
 int n;
-int f[N][10];
+vector<int> heights;
+int bricks, ladders;
+
+bool ok(int x) {
+    vector<int> vec;
+    for (int i = 1; i <= x; ++i) {
+        if (heights[i] > heights[i - 1]) {
+            vec.push_back(heights[i] - heights[i - 1]);
+        }
+    }
+    sort(all(vec));
+    reverse(all(vec));
+    int has = bricks;
+    while (!vec.empty() && has >= vec.back()) {
+        has -= vec.back();
+        vec.pop_back();
+    }
+    return SZ(vec) <= ladders;
+}
 
 class Solution {
 public:
-    int countVowelStrings(int n) {
-        memset(f, 0, sizeof f);
-        f[0][0] = 1;
-        for (int i = 1; i <= n + 1; ++i) {
-            for (int j = 1; j <= 5; ++j) {
-                for (int k = 0; k <= j; ++k) {
-                    f[i][j] += f[i - 1][k];
-                }
+    int furthestBuilding(vector<int> &_heights, int _bricks, int _ladders) {
+        heights = _heights;
+        bricks = _bricks;
+        ladders = _ladders;
+        n = SZ(heights);
+        int l = 0, r = n - 1, res = l;
+        while (r - l >= 0) {
+            int mid = (l + r) >> 1;
+            if (ok(mid)) {
+                l = mid + 1;
+                res = mid;
+            } else {
+                r = mid - 1;
             }
         }
-        return f[n + 1][5];
+        return res;
     }
 };
 
-void run() {}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = nextInt();
-    while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif
