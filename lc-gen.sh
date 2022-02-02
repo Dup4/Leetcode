@@ -2,6 +2,7 @@
 
 set -e
 
+# shellcheck disable=SC2034
 BASENAME="$(basename "${PWD}")"
 TOP_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
@@ -12,6 +13,7 @@ if [[ -f "${UTILS_SH}" ]]; then
 fi
 
 template_name="template.cpp"
+solution_name="solution"
 
 template_path="${TOP_DIR}"/template/"${template_name}"
 template_suffix=$(echo "$template_path" | awk -F "." '{print $NF}')
@@ -24,7 +26,7 @@ function generate_template() {
 }
 
 if [[ -z "${1}" ]]; then
-    generate_template "${PWD}/${BASENAME}.${template_suffix}"
+    generate_template "${PWD}/${solution_name}.${template_suffix}"
     exit 0
 fi
 
@@ -50,7 +52,7 @@ for c in {a..z}; do
         break
     fi
 
-    current_template_path="${c}/${c}.${template_suffix}"
+    current_template_path="${c}/${solution_name}.${template_suffix}"
 
     mkdir "${c}"
 
