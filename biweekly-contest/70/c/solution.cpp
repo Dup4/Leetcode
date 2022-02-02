@@ -95,3 +95,11 @@ public:
         return res;
     }
 };
+
+#ifdef LOCAL
+
+int main() {
+    return 0;
+}
+
+#endif

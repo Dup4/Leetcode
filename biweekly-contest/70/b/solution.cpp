@@ -49,3 +49,11 @@ public:
         return max(0ll, _upper - _lower + 1);
     }
 };
+
+#ifdef LOCAL
+
+int main() {
+    return 0;
+}
+
+#endif
