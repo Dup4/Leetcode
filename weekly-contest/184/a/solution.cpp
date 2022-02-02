@@ -86,86 +86,32 @@ inline ll qpow(ll base, ll n) {
     return res;
 }
 // head
-constexpr int N = 5e3 + 10;
-int f[N][30];
-
-struct E {
-    int a[3];
-};
-
-E get(int x) {
-    E e;
-    e.a[0] = x % 3;
-    x /= 3;
-    e.a[1] = x % 3;
-    x /= 3;
-    e.a[2] = x % 3;
-    return e;
-}
-
-bool ok(int x) {
-    E e = get(x);
-    if (e.a[0] != e.a[1] && e.a[1] != e.a[2])
-        return 1;
-    return 0;
-}
-
-int gao(int n) {
-    memset(f, 0, sizeof f);
-    f[0][0] = 1;
-    vector<int> vec;
-    for (int i = 0; i < 27; ++i) {
-        if (ok(i))
-            vec.push_back(i);
-    }
-    for (int i : vec) f[1][i] = 1;
-    for (int i = 2; i <= n; ++i) {
-        for (int j : vec) {
-            for (int k : vec) {
-                E ej = get(j);
-                E ek = get(k);
-                int ok = 1;
-                for (int o = 0; o < 3; ++o) {
-                    if (ej.a[o] == ek.a[o]) {
-                        ok = 0;
-                        break;
-                    }
-                }
-                if (ok)
-                    chadd(f[i][j], f[i - 1][k]);
-            }
-        }
-    }
-    int res = 0;
-    for (int i : vec) chadd(res, f[n][i]);
-    return res;
-}
 
 class Solution {
 public:
-    int numOfWays(int n) {
-        return gao(n);
+    vector<string> stringMatching(vector<string> &words) {
+        sort(words.begin(), words.end(), [&](string x, string y) {
+            return SZ(x) < SZ(y);
+        });
+        vector<string> res;
+        int n = SZ(words);
+        for (int i = 0; i < n; ++i) {
+            for (int j = i + 1; j < n; ++j) {
+                //	dbg(i, j, words[j].find(words[i], 0));
+                if (words[j].find(words[i], 0) < SZ(words[j])) {
+                    res.push_back(words[i]);
+                    break;
+                }
+            }
+        }
+        return res;
     }
 };
 
-void run() {
-    int n;
-    rd(n);
-    pt((new Solution)->numOfWays(n));
-}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    //	int _T = nextInt();
-    //	while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    run();
     return 0;
 }
+
+#endif

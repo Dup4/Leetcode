@@ -86,48 +86,23 @@ inline ll qpow(ll base, ll n) {
     return res;
 }
 // head
+constexpr int N = 1e5 + 10;
+int n;
 
 class Solution {
 public:
-    vector<string> stringMatching(vector<string> &words) {
-        sort(words.begin(), words.end(), [&](string x, string y) {
-            return SZ(x) < SZ(y);
-        });
-        vector<string> res;
-        int n = SZ(words);
-        for (int i = 0; i < n; ++i) {
-            for (int j = i + 1; j < n; ++j) {
-                //	dbg(i, j, words[j].find(words[i], 0));
-                if (words[j].find(words[i], 0) < SZ(words[j])) {
-                    res.push_back(words[i]);
-                    break;
-                }
-            }
+    string entityParser(string text) {
+        string res = "", tmp = "";
+        int dur = 0;
+        for (auto &c : text) {
         }
-        return res;
     }
 };
 
-void run() {
-    int n;
-    rd(n);
-    vector<string> vec(n);
-    for (auto &it : vec) rd(it);
-    pt((new Solution)->stringMatching(vec));
-}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    //	int _T = nextInt();
-    //	while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    run();
     return 0;
 }
+
+#endif
