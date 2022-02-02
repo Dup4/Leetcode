@@ -93,44 +93,41 @@ int n;
 
 class Solution {
 public:
-    int numSpecial(vector<vector<int>> &mat) {
-        int n = SZ(mat);
-        int m = SZ(mat[0]);
-        int res = 0;
+    bool isTransformable(string s, string t) {
+        vector<int> vec[15];
+        n = SZ(s);
         for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < m; ++j) {
-                if (mat[i][j] == 1) {
-                    int ok = 1;
-                    for (int k = 0; k < m; ++k) {
-                        if (k != j && mat[i][k] == 1)
-                            ok = 0;
+            int num = s[i] - '0';
+            vec[num].push_back(i);
+        }
+        reverse(all(t));
+        for (auto &ch : t) {
+            int num = ch - '0';
+            if (!vec[num].empty()) {
+                int ok = 1;
+                for (int i = num + 1; i < 10; ++i) {
+                    if (!vec[i].empty() && vec[i].back() > vec[num].back()) {
+                        ok = 0;
+                        break;
                     }
-                    for (int k = 0; k < n; ++k) {
-                        if (k != i && mat[k][j] == 1)
-                            ok = 0;
-                    }
-                    res += ok;
                 }
+                if (ok) {
+                    vec[num].pop_back();
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
             }
         }
-        return res;
+        return true;
     }
 };
 
-void run() {}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = nextInt();
-    while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif

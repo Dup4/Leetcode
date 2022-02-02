@@ -13,18 +13,18 @@ using pII = pair<int, int>;
 using pLL = pair<ll, ll>;
 constexpr int mod = 1e9 + 7;
 template <class T1, class T2>
-inline void chadd(T1 &x, T2 y, int Mod = mod) {
+inline void chadd(T1& x, T2 y, int Mod = mod) {
     x += y;
     while (x >= Mod) x -= Mod;
     while (x < 0) x += Mod;
 }
 template <class T1, class T2>
-inline void chmax(T1 &x, T2 y) {
+inline void chmax(T1& x, T2 y) {
     if (x < y)
         x = y;
 }
 template <class T1, class T2>
-inline void chmin(T1 &x, T2 y) {
+inline void chmin(T1& x, T2 y) {
     if (x > y)
         x = y;
 }
@@ -35,7 +35,7 @@ inline int nextInt() {
 }
 void rd() {}
 template <class T, class... Ts>
-void rd(T &arg, Ts &...args) {
+void rd(T& arg, Ts&... args) {
     cin >> arg;
     rd(args...);
 }
@@ -48,31 +48,31 @@ void err() {
     cout << "\033[39;0m" << endl;
 }
 template <class T, class... Ts>
-void err(const T &arg, const Ts &...args) {
+void err(const T& arg, const Ts&... args) {
     cout << arg << ' ';
     err(args...);
 }
 template <template <typename...> class T, typename t, typename... A>
-void err(const T<t> &arg, const A &...args) {
-    for (auto &v : arg) cout << v << ' ';
+void err(const T<t>& arg, const A&... args) {
+    for (auto& v : arg) cout << v << ' ';
     err(args...);
 }
 void ptt() {
     cout << endl;
 }
 template <class T, class... Ts>
-void ptt(const T &arg, const Ts &...args) {
+void ptt(const T& arg, const Ts&... args) {
     cout << ' ' << arg;
     ptt(args...);
 }
 template <class T, class... Ts>
-void pt(const T &arg, const Ts &...args) {
+void pt(const T& arg, const Ts&... args) {
     cout << arg;
     ptt(args...);
 }
 void pt() {}
 template <template <typename...> class T, typename t, typename... A>
-void pt(const T<t> &arg, const A &...args) {
+void pt(const T<t>& arg, const A&... args) {
     for (int i = 0, sze = arg.size(); i < sze; ++i) cout << arg[i] << " \n"[i == sze - 1];
     pt(args...);
 }
@@ -88,56 +88,46 @@ inline ll qpow(ll base, ll n) {
     return res;
 }
 // head
-constexpr int N = 1e5 + 10;
+constexpr int N = 5e2 + 10;
 int n;
+int vis[N], g[N][N];
+
+inline void ok(int x, int y, int u, int v) {
+    if (g[x][u] < g[x][y] && g[u][x] < g[u][v])
+        vis[x] = 1;
+}
 
 class Solution {
 public:
-    bool isTransformable(string s, string t) {
-        vector<int> vec[15];
-        n = SZ(s);
+    int unhappyFriends(int n, vector<vector<int>>& preferences, vector<vector<int>>& pairs) {
+        int res = 0;
+        for (int i = 0; i <= n; ++i) vis[i] = 0;
+        int m = n / 2;
         for (int i = 0; i < n; ++i) {
-            int num = s[i] - '0';
-            vec[num].push_back(i);
-        }
-        reverse(all(t));
-        for (auto &ch : t) {
-            int num = ch - '0';
-            if (!vec[num].empty()) {
-                int ok = 1;
-                for (int i = num + 1; i < 10; ++i) {
-                    if (!vec[i].empty() && vec[i].back() > vec[num].back()) {
-                        ok = 0;
-                        break;
-                    }
-                }
-                if (ok) {
-                    vec[num].pop_back();
-                } else {
-                    return false;
-                }
-            } else {
-                return false;
+            for (int j = 0; j < n - 1; ++j) {
+                g[i][preferences[i][j]] = j;
             }
         }
-        return true;
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < m; ++j)
+                if (i != j) {
+                    int x = pairs[i][0], y = pairs[i][1];
+                    int u = pairs[j][0], v = pairs[j][1];
+                    ok(x, y, u, v);
+                    ok(x, y, v, u);
+                    ok(y, x, u, v);
+                    ok(y, x, v, u);
+                }
+        }
+        for (int i = 0; i < n; ++i) res += vis[i];
+        return res;
     }
 };
 
-void run() {}
+#ifdef LOCAL
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cout << fixed << setprecision(20);
-    int _T = nextInt();
-    while (_T--) run();
-    //    for (int kase = 1; kase <= _T; ++kase) {
-    //        cout << "Case #" << kase << ": ";
-    //        run();
-    //    }
-    //	while (cin >> n) run();
-    //	run();
     return 0;
 }
+
+#endif
