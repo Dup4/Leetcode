@@ -37,8 +37,28 @@
             "iterator": "cpp"
         },
         "cSpell.words": [
+            "arithmatex",
+            "autohide",
+            "betterem",
+            "escapeall",
+            "fontawesome",
+            "hardbreak",
+            "inlinehilite",
             "leetcode",
-            "mkdocs"
+            "linenums",
+            "magiclink",
+            "mkdocs",
+            "nbsp",
+            "noopener",
+            "noreferrer",
+            "progressbar",
+            "pymdownx",
+            "Roboto",
+            "saneheaders",
+            "smartsymbols",
+            "striphtml",
+            "superfences",
+            "tasklist"
         ]
     },
 }

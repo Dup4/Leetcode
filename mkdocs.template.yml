@@ -9,7 +9,7 @@ repo_name: Leetcode
 repo_url: https://github.com/Dup4/leetcode
 
 # Copyright
-copyright: Copyright &copy; 2022 <a href="https://github.com/Dup4" target="_blank" rel="noopener">Dup4</a>
+copyright: Copyright &copy; 2022 <a href="https://github.com/Dup4" target="_blank" rel="noopener noreferrer">Dup4</a>
 
 # Configuration
 theme:
