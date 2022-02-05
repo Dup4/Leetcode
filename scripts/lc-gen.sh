@@ -12,7 +12,7 @@ if [[ -f "${UTILS_SH}" ]]; then
     source "${UTILS_SH}"
 fi
 
-template_name="template.cpp"
+template_name="solution-cpp.cpp"
 solution_name="solution"
 
 template_path="${TOP_DIR}"/../template/"${template_name}"

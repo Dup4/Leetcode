@@ -182,6 +182,14 @@ caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
 
+chalk@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.0.tgz#4e14870a618d9e2edd97dd8345fd9d9dc315646a"
+  integrity sha512-qwx12AxXe2Q5xQ43Ac//I6v5aXTipYrSESdOgzrN+9XjgEpyjpKuvSGaN4qE93f7TQTlerQQ8S+EQ0EyDoVL1A==
+  dependencies:
+    ansi-styles "^4.1.0"
+    supports-color "^7.1.0"
+
 chalk@^4.1.0:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
@@ -806,10 +814,10 @@ jsprim@^1.2.2:
     json-schema "0.4.0"
     verror "1.10.0"
 
-leetcode-api-typescript@^1.8.4:
-  version "1.8.4"
-  resolved "https://registry.yarnpkg.com/leetcode-api-typescript/-/leetcode-api-typescript-1.8.4.tgz#390288d67e3e1b3ad6e2c9feb7cb85bd349e5d12"
-  integrity sha512-pwqQStWHc5ZDlrUdL/p22s90grVpImyqar14WwsZ8dDi70rsZaMzXRjGPSaFodogyKgWuF91+GViiose6y3+XQ==
+leetcode-api-typescript@^1.8.6:
+  version "1.8.6"
+  resolved "https://registry.yarnpkg.com/leetcode-api-typescript/-/leetcode-api-typescript-1.8.6.tgz#742dbcd693baa592dc3d2e1fa097669f871086da"
+  integrity sha512-bD049QKyFqKTPr3kdAXWVGhE785zv0BB/Hm89Ir5STy1SZgfWaTFBE8p3EVx4Lj/awERlU8MgU90em7xyPNH5g==
   dependencies:
     dotenv "^16.0.0"
     graphql "^16.3.0"
@@ -818,14 +826,15 @@ leetcode-api-typescript@^1.8.4:
     request-promise-native "^1.0.9"
     type-graphql "^1.1.1"
 
-leetcode-tools@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/leetcode-tools/-/leetcode-tools-1.0.0.tgz#8dbea07deb038c42a5a1fe628cede0bd46b8b8b5"
-  integrity sha512-rmMHjdEm0KFYwCiGPBDWRsd4XTxeI58ZK7WRBDXJBL3I9B2F3p+DquqeKTPoZzeJOnxfrj8rPhLht0GuTKbIMQ==
+leetcode-tools@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/leetcode-tools/-/leetcode-tools-1.1.0.tgz#93d4cf2e6554b704e7a92e4142dcf6e31d53911e"
+  integrity sha512-x9+ReTf2YhpQbHh9q9vQ3JfiilKjRMdBVYvvBtVanHp7wvjPQKt3iVRVhX/ki3RqRIel/VU7054owVjKwCcTzg==
   dependencies:
+    chalk "4.1.0"
     commander "^9.0.0"
     dotenv "^16.0.0"
-    leetcode-api-typescript "^1.8.4"
+    leetcode-api-typescript "^1.8.6"
 
 levn@~0.3.0:
   version "0.3.0"
