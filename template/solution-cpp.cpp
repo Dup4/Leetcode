@@ -45,6 +45,8 @@ inline bool chmin(T &a, const S &b) {
 #endif
 // head
 
+// solution class
+
 #ifdef LOCAL
 
 int main() {
