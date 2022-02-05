@@ -862,10 +862,10 @@ leetcode-api-typescript@^1.8.6:
     request-promise-native "^1.0.9"
     type-graphql "^1.1.1"
 
-leetcode-tools@^1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/leetcode-tools/-/leetcode-tools-1.3.2.tgz#bd8b8785bf98f868479077543d657a809eaf8eca"
-  integrity sha512-AlW3Ro6dVUe4jon8sLqbPvXcRFbsxR6p9mrb8SpXsGNuxFK8vce/SVwI86Ya5+9KO6qAgepkynz98MSrSHIRtg==
+leetcode-tools@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/leetcode-tools/-/leetcode-tools-1.3.3.tgz#253566c4aacb20b3a7086e637cd5b522b3f4da4c"
+  integrity sha512-85SHysMFFaHrEGBMurTS+ScZHJgHjxXVoL2oy9yHCyrCE6CrSBp33seZiglPUtyc48+qNepKpRs7keSVtPx5Eg==
   dependencies:
     chalk "4.1.0"
     commander "^9.0.0"
