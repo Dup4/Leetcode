@@ -1,12 +1,13 @@
 site_name: Leetcode
-site_url: https://dup4.com/leetcode
+site_url: https://dup4.com/Leetcode
 site_author: Dup4
 site_description: >-
-  Leetcode
+  Leetcode solutions and tutorials
 
 # Repository
-repo_name: Leetcode
+repo_name: Dup4/Leetcode
 repo_url: https://github.com/Dup4/leetcode
+edit_uri: ""
 
 # Copyright
 copyright: Copyright &copy; 2022 <a href="https://github.com/Dup4" target="_blank" rel="noopener noreferrer">Dup4</a>
@@ -35,7 +36,7 @@ theme:
     - navigation.tabs
     # - navigation.tabs.sticky
     - navigation.top
-    - navigation.indexes
+    # - navigation.indexes
     - search.highlight
     - search.share
     - search.suggest
@@ -67,7 +68,7 @@ theme:
   favicon: assets/favicon.png
   icon:
     repo: fontawesome/brands/github
-    logo: logo
+  logo: assets/favicon.png
 
 # Plugins
 plugins:
@@ -160,4 +161,4 @@ markdown_extensions:
       check_paths: true
   - pymdownx.saneheaders:
 
-docs_dir: docs
+docs_dir: _docs

@@ -6,8 +6,11 @@
 .env
 env.sh
 
+/_docs
 /site
 /venv
 /node_modules
+
+mkdocs.yml
 
 yarn-error.log
