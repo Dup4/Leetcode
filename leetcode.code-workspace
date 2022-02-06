@@ -6,8 +6,9 @@
     ],
     "settings": {
         "C_Cpp.default.includePath": [
+            "${default}",
             "${workspaceFolder}/**",
-            "${workspaceFolder}/template",
+            "${workspaceFolder}/template"
         ],
         "C_Cpp.default.defines": [
             "LOCAL"
