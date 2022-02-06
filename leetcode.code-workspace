@@ -43,7 +43,8 @@
             "set": "cpp",
             "__bit_reference": "cpp",
             "__tree": "cpp",
-            "chrono": "cpp"
+            "chrono": "cpp",
+            "compare": "cpp"
         },
         "cSpell.words": [
             "arithmatex",

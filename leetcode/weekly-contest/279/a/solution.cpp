@@ -54,9 +54,9 @@ public:
             a[i & 1].push_back(nums[i]);
         }
 
-        sort(all(a[0]));
+        sort(all(a[0]), greater<int>());
         sort(all(a[1]));
-        reverse(all(a[0]));
+
         vector<int> res;
         for (int i = 0; i < n; i++) {
             res.push_back(a[i & 1].back());
