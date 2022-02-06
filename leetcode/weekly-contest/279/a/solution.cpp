@@ -45,7 +45,27 @@ inline bool chmin(T &a, const S &b) {
 #endif
 // head
 
-// solution class
+class Solution {
+public:
+    vector<int> sortEvenOdd(vector<int> &nums) {
+        int n = nums.size();
+        vector<int> a[2];
+        for (int i = 0; i < n; i++) {
+            a[i & 1].push_back(nums[i]);
+        }
+
+        sort(all(a[0]));
+        sort(all(a[1]));
+        reverse(all(a[0]));
+        vector<int> res;
+        for (int i = 0; i < n; i++) {
+            res.push_back(a[i & 1].back());
+            a[i & 1].pop_back();
+        }
+
+        return res;
+    }
+};
 
 #ifdef LOCAL
 

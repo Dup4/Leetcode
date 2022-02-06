@@ -45,11 +45,53 @@ inline bool chmin(T &a, const S &b) {
 #endif
 // head
 
-// solution class
+const int INF = 0x3f3f3f3f;
+
+class Solution {
+public:
+    int minimumTime(string &s) {
+        int n = s.size();
+        int res = n;
+
+        int pre = 0;
+        int Min = 0;
+
+        for (int i = 1; i <= n; i++) {
+            if (s[i - 1] == '1') {
+                pre += 2;
+            }
+
+            chmin(Min, i - pre);
+            chmin(res, Min + pre + n - i);
+        }
+
+        return res;
+    }
+};
 
 #ifdef LOCAL
 
 int main() {
+    auto s = new Solution();
+
+    {
+        string t = "1100101";
+        auto ans = s->minimumTime(t);
+        assert_eq(ans, 5);
+    }
+
+    {
+        string t = "0010";
+        auto ans = s->minimumTime(t);
+        assert_eq(ans, 2);
+    }
+
+    {
+        string t = "00000010000000";
+        auto ans = s->minimumTime(t);
+        assert_eq(ans, 2);
+    }
+
     return 0;
 }
 

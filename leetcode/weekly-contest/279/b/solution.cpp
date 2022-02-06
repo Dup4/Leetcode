@@ -45,7 +45,53 @@ inline bool chmin(T &a, const S &b) {
 #endif
 // head
 
-// solution class
+class Solution {
+public:
+    long long smallestNumber(long long num) {
+        if (num == 0) {
+            return 0;
+        }
+
+        int f = 0;
+        if (num < 0) {
+            f = 1;
+            num = -num;
+        }
+
+        string s = to_string(num);
+        int n = s.size();
+        sort(all(s));
+        if (f) {
+            reverse(all(s));
+        } else {
+            int zero = 0;
+            for (int i = 0; i < n; i++) {
+                if (s[i] == '0') {
+                    ++zero;
+                } else {
+                    break;
+                }
+            }
+
+            s = s.substr(zero, n - zero);
+            reverse(all(s));
+
+            char t = s.back();
+            s.pop_back();
+
+            s += string(zero, '0');
+            s += string(1, t);
+            reverse(all(s));
+        }
+
+        ll res = 0;
+        for (auto &c : s) {
+            res = res * 10 + (c - '0');
+        }
+
+        return res * (f ? -1 : 1);
+    }
+};
 
 #ifdef LOCAL
 
