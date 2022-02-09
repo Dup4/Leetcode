@@ -1,4 +1,8 @@
-<p><strong><a href="https://leetcode-cn.com//problems/palindrome-number/" target="_blank" rel="noopener noreferrer">回文数</a></strong></p>
+
+??? info "Metadata"
+    - Link: [回文数](https://leetcode-cn.com/problems/palindrome-number)
+    - Difficulty: Easy
+    - Tag: `数学`
 
 <p>给你一个整数 <code>x</code> ，如果 <code>x</code> 是一个回文整数，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
 

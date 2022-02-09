@@ -1,4 +1,8 @@
-<p><strong><a href="https://leetcode-cn.com//problems/reducing-dishes/" target="_blank" rel="noopener noreferrer">做菜顺序</a></strong></p>
+
+??? info "Metadata"
+    - Link: [做菜顺序](https://leetcode-cn.com/problems/reducing-dishes)
+    - Difficulty: Hard
+    - Tag: `贪心` `数组` `动态规划` `排序`
 
 <p>一个厨师收集了他&nbsp;<code>n</code>&nbsp;道菜的满意程度&nbsp;<code>satisfaction</code>&nbsp;，这个厨师做出每道菜的时间都是 1 单位时间。</p>
 

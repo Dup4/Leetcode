@@ -1,4 +1,8 @@
-<p><strong><a href="https://leetcode-cn.com//problems/stock-price-fluctuation/" target="_blank" rel="noopener noreferrer">股票价格波动</a></strong></p>
+
+??? info "Metadata"
+    - Link: [股票价格波动](https://leetcode-cn.com/problems/stock-price-fluctuation)
+    - Difficulty: Medium
+    - Tag: `设计` `哈希表` `数据流` `有序集合` `堆（优先队列）`
 
 <p>给你一支股票价格的数据流。数据流中每一条记录包含一个 <strong>时间戳</strong>&nbsp;和该时间点股票对应的 <strong>价格</strong>&nbsp;。</p>
 

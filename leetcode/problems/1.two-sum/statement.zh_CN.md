@@ -1,4 +1,8 @@
-<p><strong><a href="https://leetcode-cn.com//problems/two-sum/" target="_blank" rel="noopener noreferrer">两数之和</a></strong></p>
+
+??? info "Metadata"
+    - Link: [两数之和](https://leetcode-cn.com/problems/two-sum)
+    - Difficulty: Easy
+    - Tag: `数组` `哈希表`
 
 <p>给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值 </strong><em><code>target</code></em>  的那 <strong>两个</strong> 整数，并返回它们的数组下标。</p>
 

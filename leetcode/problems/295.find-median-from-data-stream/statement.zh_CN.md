@@ -1,4 +1,8 @@
-<p><strong><a href="https://leetcode-cn.com//problems/find-median-from-data-stream/" target="_blank" rel="noopener noreferrer">数据流的中位数</a></strong></p>
+
+??? info "Metadata"
+    - Link: [数据流的中位数](https://leetcode-cn.com/problems/find-median-from-data-stream)
+    - Difficulty: Hard
+    - Tag: `设计` `双指针` `数据流` `排序` `堆（优先队列）`
 
 <p>中位数是有序列表中间的数。如果列表长度是偶数，中位数则是中间两个数的平均值。</p>
 

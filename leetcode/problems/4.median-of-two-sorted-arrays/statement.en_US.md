@@ -1,4 +1,8 @@
-<p><strong><a href="https://leetcode.com//problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener noreferrer">Median of Two Sorted Arrays</a></strong></p>
+
+??? info "Metadata"
+    - Link: [Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays)
+    - Difficulty: Hard
+    - Tag: `Array` `Binary Search` `Divide and Conquer`
 
 <p>Given two sorted arrays <code>nums1</code> and <code>nums2</code> of size <code>m</code> and <code>n</code> respectively, return <strong>the median</strong> of the two sorted arrays.</p>
 

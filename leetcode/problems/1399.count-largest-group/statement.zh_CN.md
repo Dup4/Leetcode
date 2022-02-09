@@ -1,4 +1,8 @@
-<p><strong><a href="https://leetcode-cn.com//problems/count-largest-group/" target="_blank" rel="noopener noreferrer">统计最大组的数目</a></strong></p>
+
+??? info "Metadata"
+    - Link: [统计最大组的数目](https://leetcode-cn.com/problems/count-largest-group)
+    - Difficulty: Easy
+    - Tag: `哈希表` `数学`
 
 <p>给你一个整数 <code>n</code>&nbsp;。请你先求出从 <code>1</code>&nbsp;到 <code>n</code> 的每个整数 10 进制表示下的数位和（每一位上的数字相加），然后把数位和相等的数字放到同一个组中。</p>
 

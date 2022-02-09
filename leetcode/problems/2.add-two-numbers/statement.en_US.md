@@ -1,4 +1,8 @@
-<p><strong><a href="https://leetcode.com//problems/add-two-numbers/" target="_blank" rel="noopener noreferrer">Add Two Numbers</a></strong></p>
+
+??? info "Metadata"
+    - Link: [Add Two Numbers](https://leetcode.com/problems/add-two-numbers)
+    - Difficulty: Medium
+    - Tag: `Recursion` `Linked List` `Math`
 
 <p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong>, and each of their nodes contains a single digit. Add the two numbers and return the sum&nbsp;as a linked list.</p>
 
@@ -6,7 +10,7 @@
 
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2020/10/02/addtwonumber1.jpg" style="width: 483px; height: 342px;" />
+<img alt="" src="problem-assets/https:--assets.leetcode.com-uploads-2020-10-02-addtwonumber1.jpg" style="width: 483px; height: 342px;" />
 <pre>
 <strong>Input:</strong> l1 = [2,4,3], l2 = [5,6,4]
 <strong>Output:</strong> [7,0,8]

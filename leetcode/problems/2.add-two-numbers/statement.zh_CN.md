@@ -1,4 +1,8 @@
-<p><strong><a href="https://leetcode-cn.com//problems/add-two-numbers/" target="_blank" rel="noopener noreferrer">两数相加</a></strong></p>
+
+??? info "Metadata"
+    - Link: [两数相加](https://leetcode-cn.com/problems/add-two-numbers)
+    - Difficulty: Medium
+    - Tag: `递归` `链表` `数学`
 
 <p>给你两个 <strong>非空</strong> 的链表，表示两个非负的整数。它们每位数字都是按照 <strong>逆序</strong> 的方式存储的，并且每个节点只能存储 <strong>一位</strong> 数字。</p>
 
@@ -9,7 +13,7 @@
 <p> </p>
 
 <p><strong>示例 1：</strong></p>
-<img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/02/addtwonumber1.jpg" style="width: 483px; height: 342px;" />
+<img alt="" src="problem-assets/https:--assets.leetcode-cn.com-aliyun-lc-upload-uploads-2021-01-02-addtwonumber1.jpg" style="width: 483px; height: 342px;" />
 <pre>
 <strong>输入：</strong>l1 = [2,4,3], l2 = [5,6,4]
 <strong>输出：</strong>[7,0,8]

@@ -1,4 +1,8 @@
-<p><strong><a href="https://leetcode-cn.com//problems/construct-k-palindrome-strings/" target="_blank" rel="noopener noreferrer">构造 K 个回文字符串</a></strong></p>
+
+??? info "Metadata"
+    - Link: [构造 K 个回文字符串](https://leetcode-cn.com/problems/construct-k-palindrome-strings)
+    - Difficulty: Medium
+    - Tag: `贪心` `哈希表` `字符串` `计数`
 
 <p>给你一个字符串 <code>s</code>&nbsp;和一个整数 <code>k</code>&nbsp;。请你用 <code>s</code>&nbsp;字符串中 <strong>所有字符</strong>&nbsp;构造 <code>k</code>&nbsp;个非空 <strong>回文串</strong>&nbsp;。</p>
 

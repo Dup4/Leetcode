@@ -1,4 +1,8 @@
-<p><strong><a href="https://leetcode-cn.com//problems/longest-substring-without-repeating-characters/" target="_blank" rel="noopener noreferrer">无重复字符的最长子串</a></strong></p>
+
+??? info "Metadata"
+    - Link: [无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters)
+    - Difficulty: Medium
+    - Tag: `哈希表` `字符串` `滑动窗口`
 
 <p>给定一个字符串 <code>s</code> ，请你找出其中不含有重复字符的 <strong>最长子串 </strong>的长度。</p>
 

@@ -1,4 +1,8 @@
-<p><strong><a href="https://leetcode.com//problems/count-largest-group/" target="_blank" rel="noopener noreferrer">Count Largest Group</a></strong></p>
+
+??? info "Metadata"
+    - Link: [Count Largest Group](https://leetcode.com/problems/count-largest-group)
+    - Difficulty: Easy
+    - Tag: `Hash Table` `Math`
 
 <p>You are given an integer <code>n</code>.</p>
 

@@ -1,4 +1,8 @@
-<p><strong><a href="https://leetcode.com//problems/palindrome-number/" target="_blank" rel="noopener noreferrer">Palindrome Number</a></strong></p>
+
+??? info "Metadata"
+    - Link: [Palindrome Number](https://leetcode.com/problems/palindrome-number)
+    - Difficulty: Easy
+    - Tag: `Math`
 
 <p>Given an integer <code>x</code>, return <code>true</code> if <code>x</code> is palindrome integer.</p>
 

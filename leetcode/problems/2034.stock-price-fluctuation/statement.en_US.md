@@ -1,4 +1,8 @@
-<p><strong><a href="https://leetcode.com//problems/stock-price-fluctuation/" target="_blank" rel="noopener noreferrer">Stock Price Fluctuation </a></strong></p>
+
+??? info "Metadata"
+    - Link: [Stock Price Fluctuation ](https://leetcode.com/problems/stock-price-fluctuation)
+    - Difficulty: Medium
+    - Tag: `Design` `Hash Table` `Data Stream` `Ordered Set` `Heap (Priority Queue)`
 
 <p>You are given a stream of <strong>records</strong> about a particular stock. Each record contains a <strong>timestamp</strong> and the corresponding <strong>price</strong> of the stock at that timestamp.</p>
 

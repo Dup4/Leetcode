@@ -1,4 +1,8 @@
-<p><strong><a href="https://leetcode.com//problems/longest-substring-without-repeating-characters/" target="_blank" rel="noopener noreferrer">Longest Substring Without Repeating Characters</a></strong></p>
+
+??? info "Metadata"
+    - Link: [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters)
+    - Difficulty: Medium
+    - Tag: `Hash Table` `String` `Sliding Window`
 
 <p>Given a string <code>s</code>, find the length of the <strong>longest substring</strong> without repeating characters.</p>
 

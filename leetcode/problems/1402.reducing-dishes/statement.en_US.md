@@ -1,4 +1,8 @@
-<p><strong><a href="https://leetcode.com//problems/reducing-dishes/" target="_blank" rel="noopener noreferrer">Reducing Dishes</a></strong></p>
+
+??? info "Metadata"
+    - Link: [Reducing Dishes](https://leetcode.com/problems/reducing-dishes)
+    - Difficulty: Hard
+    - Tag: `Greedy` `Array` `Dynamic Programming` `Sorting`
 
 <p>A chef has collected data on the <code>satisfaction</code> level of his <code>n</code> dishes. Chef can cook any dish in 1 unit of time.</p>
 
