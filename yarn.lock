@@ -905,10 +905,10 @@ jsprim@^1.2.2:
     json-schema "0.4.0"
     verror "1.10.0"
 
-leetcode-api-typescript@^1.9.2:
-  version "1.9.2"
-  resolved "https://registry.yarnpkg.com/leetcode-api-typescript/-/leetcode-api-typescript-1.9.2.tgz#e3a141b4f0ed0e37fadc6d756eb830e7043c2c3f"
-  integrity sha512-YiB3IHjqBc13HRrICoUq0/g2bVaMvt220HTXrYNuWiLKx73AdIEOEv8OS+xkLF5x8XloOMB6hv0t0zYcjtPf3A==
+leetcode-api-typescript@^1.9.3:
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/leetcode-api-typescript/-/leetcode-api-typescript-1.9.3.tgz#37bb966f325da2c1eadb46d985e6bdb3eb5224b0"
+  integrity sha512-+UEla6xYvbopuMkUdICPokRQi0DCLUYOBaok0r3OBaguaq75ZxZwpmtguBcIXchN7MT/YU2ru4/hyLgv6QN16w==
   dependencies:
     cheerio "^1.0.0-rc.10"
     dotenv "^16.0.0"
@@ -918,16 +918,16 @@ leetcode-api-typescript@^1.9.2:
     request-promise-native "^1.0.9"
     type-graphql "^1.1.1"
 
-leetcode-tools@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/leetcode-tools/-/leetcode-tools-1.7.0.tgz#9ebafdeaa4f7196e52928815620d803c418c37b0"
-  integrity sha512-mQu8n4T9xstR4dM1rzJHGwnib6LePhikJjIsgkr6Hn4EP4lgJbXZcLanW/8P4F/X7u9mE1OvXU54TBfdC8oSiA==
+leetcode-tools@^1.8.3:
+  version "1.8.3"
+  resolved "https://registry.yarnpkg.com/leetcode-tools/-/leetcode-tools-1.8.3.tgz#408a1b023870cd47d9b4ef9f3663004d11d96d43"
+  integrity sha512-dl1UPPVyj6WT8Ce/wvlb+kU86HzCucr4XlgPmhb2xQwvsr7VEu7BvGTevPaHFXh6r00LYEPAZ6W5glD7SlArrg==
   dependencies:
     chalk "4.1.0"
     commander "^9.0.0"
     dotenv "^16.0.0"
     js-yaml "^4.1.0"
-    leetcode-api-typescript "^1.9.2"
+    leetcode-api-typescript "^1.9.3"
     shelljs "^0.8.5"
 
 levn@~0.3.0:
