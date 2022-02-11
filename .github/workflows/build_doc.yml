@@ -62,5 +62,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd /var/www/dup4.cn/Leetcode
-            git pull
+            cd /var/www/dup4.cn
+            rm -rf Leetcode
+            git clone https://github.dup4.com/Dup4/Leetcode.git -b gh-pages --depth=1
