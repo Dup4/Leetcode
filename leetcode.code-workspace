@@ -44,7 +44,8 @@
             "__bit_reference": "cpp",
             "__tree": "cpp",
             "chrono": "cpp",
-            "compare": "cpp"
+            "compare": "cpp",
+            "ratio": "cpp"
         },
         "cSpell.words": [
             "arithmatex",
