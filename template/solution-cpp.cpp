@@ -7,7 +7,6 @@
 #define se second
 #define all(x) begin(x), end(x)
 #define rall rbegin(a), rend(a)
-#define lowbit(x) ((x) & (-(x)))
 #define bitcnt(x) (__builtin_popcountll(x))
 #define complete_unique(a) a.erase(unique(begin(a), end(a)), end(a))
 #define mst(x, a) memset(x, a, sizeof(x))
