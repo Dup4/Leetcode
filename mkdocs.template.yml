@@ -10,7 +10,7 @@ repo_url: https://github.com/Dup4/leetcode
 edit_uri: ""
 
 # Copyright
-copyright: Copyright &copy; 2022-present <a href="https://github.com/Dup4" target="_blank" rel="noopener noreferrer">Dup4</a>
+copyright: Copyright &copy; 2020 - present <a href="https://github.com/Dup4" target="_blank" rel="noopener noreferrer">Dup4</a>
 
 # Configuration
 theme:
@@ -75,11 +75,13 @@ plugins:
   - search:
       lang: ja
   - git-revision-date-localized
+  - rss
   - minify:
       minify_html: true
 
 # Customization
 extra:
+  generator: false
   analytics:
     provider: google
     property: !ENV GOOGLE_ANALYTICS_KEY
