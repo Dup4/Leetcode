@@ -44,48 +44,12 @@ inline bool chmin(T &a, const S &b) {
 #endif
 // head
 
-const int N = 1e5 + 10;
-const int M = 1e5;
-int pri[N], check[N];
-void sieve() {
-    memset(check, 0, sizeof check);
-    *pri = 0;
-    for (int i = 2; i < N; ++i) {
-        if (!check[i]) {
-            pri[++*pri] = i;
-        }
-        for (int j = 1; j <= *pri; ++j) {
-            if (1ll * i * pri[j] >= N)
-                break;
-            check[i * pri[j]] = 1;
-            if (i % pri[j] == 0)
-                break;
-        }
-    }
-}
-
-vector<PII> getfac(ll x) {
-    vector<PII> fac;
-    for (int i = 2; 1ll * i * i <= x; ++i) {
-        if (x % i == 0) {
-            PII it = PII(i, 0);
-            while (x % i == 0) {
-                ++it.se;
-                x /= i;
-            }
-            fac.push_back(it);
-        }
-    }
-    if (x != 1)
-        fac.push_back(PII(x, 1));
-    return fac;
-}
-
 class Solution {
 public:
-    long long coutPairs(vector<int> &nums, int k) {
-        // sieve();
+    const int N = 1e5 + 10;
+    const int M = 1e5;
 
+    long long coutPairs(vector<int> &nums, int k) {
         vector<int> cnt(N, 0);
         for (auto &v : nums) {
             ++cnt[v];
@@ -100,12 +64,11 @@ public:
 
         int n = nums.size();
         long long res = 0;
+
         for (int i = 0; i < n; i++) {
             int x = nums[i];
-            int gcd = __gcd(x, k);
-            int y = k / gcd;
+            int y = k / __gcd(x, k);
             res += f[y];
-
             if (1ll * x * x % k == 0) {
                 --res;
             }
