@@ -47,34 +47,35 @@ inline bool chmin(T &a, const S &b) {
 class Solution {
 public:
     string repeatLimitedString(string s, int repeatLimit) {
-        vector<int> cnt(30, 0), vis(30, 0);
-        for (auto &c : s) {
+        vector<int> cnt(30, 0);
+        for (const auto &c : s) {
             ++cnt[c - 'a'];
         }
 
-        string res;
-        int pre = -1;
+        string res = "@";
+        int sum = 0;
         while (true) {
             int f = 0;
-            for (int i = 26; i >= 0; i--) {
+
+            for (int i = 25; i >= 0; i--) {
                 if (cnt[i] == 0) {
                     continue;
                 }
 
-                if (vis[i] >= repeatLimit) {
+                if (sum >= repeatLimit && i == res.back() - 'a') {
                     continue;
                 }
 
-                res += char('a' + i);
-                ++vis[i];
-                f = 1;
-
-                if (pre >= 0 && pre != i) {
-                    vis[pre] = 0;
+                if (i == res.back() - 'a') {
+                    ++sum;
+                } else {
+                    sum = 1;
                 }
 
+                res += char('a' + i);
                 --cnt[i];
-                pre = i;
+                f = 1;
+
                 break;
             }
 
@@ -83,7 +84,7 @@ public:
             }
         }
 
-        return res;
+        return res.substr(1);
     }
 };
 
