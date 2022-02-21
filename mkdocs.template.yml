@@ -45,6 +45,7 @@ theme:
 
     # insiders only
     # - content.tabs.link
+    # - toc.follow
 
   palette:
     - media: "(prefers-color-scheme: light)"
