@@ -79,6 +79,8 @@ plugins:
   - rss
   - minify:
       minify_html: true
+  - tags:
+      tags_file: index.md
 
 # Customization
 extra:
