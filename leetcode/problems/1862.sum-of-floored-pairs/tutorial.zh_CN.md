@@ -8,7 +8,7 @@ $$
 
 ??? warning "复杂度不对的做法"
     - 考虑枚举 $1 \leq i \leq 10^n$，然后数论分块求和。
-    - 时间复杂度 $\mathcal{O}(n\sqrt{n})$
+    - 时间复杂度 $\mathcal{O}(n\sqrt{n})$。
 
 我们考虑 $d = \lfloor \frac{x}{y} \rfloor$，那么我们枚举 $y$ 和 $d$，符合条件的 $x$ 的范围为：
 
