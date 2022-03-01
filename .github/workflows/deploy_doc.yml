@@ -1,18 +1,15 @@
 # yaml-language-server: $schema=https://json-schema.org/draft-07/schema#
-name: Build Doc
+name: Deploy Doc
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
-  build-doc:
-    name: Build documentation
+  deploy-doc:
+    name: Deploy documentation
     runs-on: ubuntu-latest
     steps:
 
@@ -40,17 +37,19 @@ jobs:
 
       - name: Build
         env:
-          GOOGLE_ANALYTICS_KEY: G-QR41N1MXE9
+          GOOGLE_ANALYTICS_KEY: G-ZJPSKKCMN9
         run: |
           yarn build-doc
 
-      - name: Deploy to gh-pages
+      - name: Deploy
         if: ${{ github.event_name != 'pull_request' }}
-        uses: peaceiris/actions-gh-pages@v3
+        uses: appleboy/ssh-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: site
-          force_orphan: true
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: 🚀 Deploying to gh-pages @ ${{ env.GITHUB_SHA }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd /var/www/dup4.cn
+            rm -rf Leetcode
+            git clone https://github.dup4.com/Dup4/Leetcode.git -b gh-pages --depth=1
