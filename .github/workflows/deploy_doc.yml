@@ -42,14 +42,12 @@ jobs:
           yarn build-doc
 
       - name: Deploy
-        if: ${{ github.event_name != 'pull_request' }}
-        uses: appleboy/ssh-action@master
+        uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          script: |
-            cd /var/www/dup4.cn
-            rm -rf Leetcode
-            git clone https://github.dup4.com/Dup4/Leetcode.git -b gh-pages --depth=1
+          port: ${{ secrets.PORT }}
+          source: "site/*"
+          target: "/var/www/dup4.cn/Leetcode"
+          rm: true
