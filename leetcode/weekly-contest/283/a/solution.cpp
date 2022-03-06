@@ -52,7 +52,7 @@ public:
         int col2 = s[3];
         int row2 = s[4];
 
-        vector <string> res;
+        vector<string> res;
 
         for (int i = col1; i <= col2; i++) {
             for (int j = row1; j <= row2; j++) {
