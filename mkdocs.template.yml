@@ -81,6 +81,7 @@ plugins:
       minify_html: true
   - tags:
       tags_file: index.md
+  - mkdocs-material-extras
 
 # Customization
 extra:
@@ -91,11 +92,6 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/Dup4/Leetcode
-
-extra_css:
-
-extra_javascript:
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
 
 # Extensions
 markdown_extensions:
@@ -111,7 +107,7 @@ markdown_extensions:
   - markdown.extensions.tables:
   - markdown.extensions.toc:
       slugify: !!python/name:pymdownx.slugs.uslugify
-      permalink: true
+      permalink: ""
       toc_depth: 3
   - pymdownx.arithmatex:
   - pymdownx.betterem:
