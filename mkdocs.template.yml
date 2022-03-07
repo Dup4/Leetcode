@@ -56,8 +56,8 @@ theme:
         icon: material/weather-sunny
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: cyan
+      scheme: dracula
+      primary: deep purple
       accent: deep purple
       toggle:
         icon: material/weather-night
