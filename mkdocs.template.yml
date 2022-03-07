@@ -75,12 +75,11 @@ theme:
 plugins:
   - search:
       lang: ja
-  - git-revision-date-localized
-  - rss
-  - minify:
-      minify_html: true
   - tags:
       tags_file: index.md
+  - git-revision-date-localized
+  - minify:
+      minify_html: true
   - mkdocs-material-extras
 
 # Customization
