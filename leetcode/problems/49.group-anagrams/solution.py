@@ -11,7 +11,7 @@ class Solution:
             except KeyError:
                 m[k] = [s]
 
-        return [m[k] for k in m]
+        return list(m.values())
 
 
 if __name__ == "__main__":
