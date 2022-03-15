@@ -15,8 +15,8 @@ class Solution:
         if not rt:
             return
 
-        self.res.append(rt.val)
         self.dfs(rt.left)
+        self.res.append(rt.val)
         self.dfs(rt.right)
 
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
