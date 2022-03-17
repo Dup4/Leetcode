@@ -19,5 +19,8 @@ class Solution:
             self.dfs(rt.right, d + 1)
 
     def minDepth(self, root: TreeNode) -> int:
+        if not root:
+            return 0
+
         self.dfs(root, 1)
         return self.res
