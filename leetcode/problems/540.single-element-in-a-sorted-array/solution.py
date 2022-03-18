@@ -7,4 +7,4 @@ class Solution:
         n = len(nums)
         if n == 1:
             return nums[0]
-        return nums[bisect_left(range(n), 0, 0, n, key=lambda ix: -1 if nums[ix] == nums[ix ^ 1] else 0)]
+        return nums[bisect_left(range(n), 0, 0, n, key=lambda ix: -1 if (ix ^ 1) < n and nums[ix] == nums[ix ^ 1] else 0)]
