@@ -100,20 +100,21 @@ public:
     priority_queue<int, vector<int>, greater<int>> low;
 
     void addNum(int num) {
-        if (big.empty() && low.empty())
+        if (big.empty() && low.empty()) {
             big.push(num);
-        else {
-            if (!big.empty()) {
-                if (num <= big.top())
-                    big.push(num);
-                else
-                    low.push(num);
-            } else {
-                if (num >= low.top())
-                    low.push(num);
-                else
-                    big.push(num);
-            }
+            return;
+        }
+
+        if (!big.empty()) {
+            if (num <= big.top())
+                big.push(num);
+            else
+                low.push(num);
+        } else {
+            if (num >= low.top())
+                low.push(num);
+            else
+                big.push(num);
         }
     }
 
@@ -122,16 +123,20 @@ public:
             low.push(big.top());
             big.pop();
         }
+
         while (SZ(low) - 1 > SZ(big)) {
             big.push(low.top());
             low.pop();
         }
+
         db res = 0;
+
         if (SZ(big) != SZ(low)) {
             res = low.top();
         } else {
             res = (big.top() + low.top()) * 1.0 / 2;
         }
+
         return res;
     }
 };
