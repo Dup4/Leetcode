@@ -36,13 +36,14 @@ jobs:
 
       - name: Install Node dependencies
         run: |
-          pnpm i
+          npm i -g pnpm @antfu/ni
+          ni
 
       - name: Build
         env:
           GOOGLE_ANALYTICS_KEY: G-QR41N1MXE9
         run: |
-          pnpm build
+          nr build
 
       - name: Deploy to gh-pages
         if: ${{ github.event_name != 'pull_request' }}

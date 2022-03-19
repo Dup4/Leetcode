@@ -33,13 +33,14 @@ jobs:
 
       - name: Install Node dependencies
         run: |
-          pnpm i
+          npm i -g pnpm @antfu/ni
+          ni
 
       - name: Build
         env:
           GOOGLE_ANALYTICS_KEY: G-ZJPSKKCMN9
         run: |
-          pnpm build
+          nr build
 
       - name: Deploy to deploy-pages
         uses: peaceiris/actions-gh-pages@v3
