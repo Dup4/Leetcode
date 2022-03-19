@@ -24,7 +24,7 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip3 install -U -r requirements.txt
+          pip install -r requirements.txt
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -33,13 +33,13 @@ jobs:
 
       - name: Install Node dependencies
         run: |
-          yarn
+          pnpm i
 
       - name: Build
         env:
           GOOGLE_ANALYTICS_KEY: G-ZJPSKKCMN9
         run: |
-          yarn build-doc
+          pnpm build
 
       - name: Deploy to deploy-pages
         uses: peaceiris/actions-gh-pages@v3
