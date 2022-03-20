@@ -69,14 +69,6 @@ struct SEG {
         }
     } t[N << 2], res;
 
-    // vector<node> t;
-    // node res;
-
-    // SEG() {
-    //     t = vector<node>(N << 2, node());
-    //     res.init();
-    // }
-
     void down(int id) {
         int &lazy = t[id].lazy;
         t[id << 1].up(lazy);
@@ -100,7 +92,7 @@ struct SEG {
     }
 
     void update(int id, int l, int r, int ql, int qr, int v) {
-        if (ql > qr) {
+        if (ql > qr || ql > r || qr < l) {
             return;
         }
 
@@ -118,11 +110,10 @@ struct SEG {
     }
 
     void query(int id, int l, int r, int ql, int qr) {
-        if (ql > qr) {
+        if (ql > qr || ql > r || qr < l) {
             return;
         }
 
-        // cout << l << " " << r << " " << ql << " " << qr << endl;
         if (l >= ql && r <= qr) {
             res = res + t[id];
             return;
@@ -147,11 +138,6 @@ struct SEG {
         res.init();
         query(1, 1, n, ix, ix);
         return res.m;
-    }
-
-    void setZero(int n, int ix) {
-        int x = query(n, ix);
-        update(1, 1, n, ix, ix, -x);
     }
 };
 
@@ -188,8 +174,6 @@ public:
             }
         }
 
-        // pre_seg.init(n);
-        // nx_seg.init(n);
         pre_seg.build(1, 1, n, pre);
         nx_seg.build(1, 1, n, nx);
 
@@ -208,12 +192,9 @@ public:
                 {
                     int cur_pre = pre_seg.query(n, ix);
                     int cur_nx = nx_seg.query(n, ix);
-                    nx_seg.update(1, 1, n, ix - cur_pre + 1, ix - 1, -cur_nx);
-                    pre_seg.update(1, 1, n, ix + 1, ix + cur_nx - 1, -cur_pre);
+                    nx_seg.update(1, 1, n, ix - cur_pre + 1, ix, -cur_nx);
+                    pre_seg.update(1, 1, n, ix, ix + cur_nx - 1, -cur_pre);
                 }
-
-                pre_seg.setZero(n, ix);
-                nx_seg.setZero(n, ix);
 
                 {
                     int ccur_pre = pre_seg.query(n, ix - 1);
@@ -237,14 +218,6 @@ public:
             pre_seg.res.init();
             pre_seg.query(1, 1, n, 1, n);
             res.push_back(pre_seg.res.m);
-
-            // vector<int> pre, nx;
-            // for (int i = 1; i <= n; i++) {
-            //     pre.push_back(pre_seg.query(n, i));
-            //     nx.push_back(nx_seg.query(n, i));
-            // }
-            // dbg(pre);
-            // dbg(nx);
         }
 
         return res;
@@ -256,6 +229,13 @@ public:
 int main() {
     {
         auto s = new Solution();
+        auto v = vector<int>({1, 3, 3});
+        auto ans = s->longestRepeating("babacc", "bcb", v);
+        dbg(ans);
+    }
+
+    {
+        auto s = new Solution();
         auto v = vector<int>({2, 1});
         auto ans = s->longestRepeating("abyzz", "aa", v);
         dbg(ans);
@@ -263,10 +243,11 @@ int main() {
 
     {
         auto s = new Solution();
-        auto v = vector<int>({1, 3, 3});
-        auto ans = s->longestRepeating("babacc", "bcb", v);
+        auto v = vector<int>({5, 0});
+        auto ans = s->longestRepeating("dbgmcagale", "mf", v);
         dbg(ans);
     }
+
     return 0;
 }
 
