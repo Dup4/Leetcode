@@ -1,5 +1,8 @@
 #pragma once
-#include <bits/stdc++.h>
+#include <iostream>
+#include <map>
+#include <string>
+#include <vector>
 using namespace std;
 
 inline const static char* COLOR_GREEN = "\033[0;32m";
