@@ -1,11 +1,11 @@
 lockfileVersion: 5.3
 
 specifiers:
-  leetcode-tools: ^1.13.0
+  leetcode-tools: ^1.14.0
   mkdocs-render-math-ssr: ^1.0.5
 
 dependencies:
-  leetcode-tools: 1.13.0
+  leetcode-tools: 1.14.0
   mkdocs-render-math-ssr: 1.0.5
 
 packages:
@@ -879,8 +879,8 @@ packages:
       verror: 1.10.0
     dev: false
 
-  /leetcode-api-typescript/1.10.6:
-    resolution: {integrity: sha512-DgFtvI9yVMKMg93FKuv1Evz+9PpZBfX6wFI8dXOJfq6MMWqkx3KwQ1OY5o8cPaQrQkhiIC8XvTvhDaGs9JZ/Jw==}
+  /leetcode-api-typescript/1.11.0:
+    resolution: {integrity: sha512-bS/eAzFZdaGk0fJh56AjJwtqLUDXRvM8iCvoIbFniAe29uI5G0KmZlXFTrUo7VSgQXSmW2SERzYNbxXV4Ex/cw==}
     dependencies:
       cheerio: 1.0.0-rc.10
       dotenv: 16.0.0
@@ -894,15 +894,15 @@ packages:
       - encoding
     dev: false
 
-  /leetcode-tools/1.13.0:
-    resolution: {integrity: sha512-BJ+yEP2W3xELKq5J1pxdVAlYEzjKlz/HYGEKLeH76HEoNShFlReK0TQUBccwDjl+7Ctc0CawJe6supkXtC3gjg==}
+  /leetcode-tools/1.14.0:
+    resolution: {integrity: sha512-cPVxot0AnJXZP66eCyOr4zi4alIa8chGVYq0EkkWTmsxv+KiKLJaHmp+njI8ADSTTF1LzdqPn+Fu8ALmzebc7A==}
     hasBin: true
     dependencies:
       chalk: 4.1.0
       commander: 9.1.0
       dotenv: 16.0.0
       js-yaml: 4.1.0
-      leetcode-api-typescript: 1.10.6
+      leetcode-api-typescript: 1.11.0
       shelljs: 0.8.5
     transitivePeerDependencies:
       - class-validator
