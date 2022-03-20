@@ -1,11 +1,11 @@
 lockfileVersion: 5.3
 
 specifiers:
-  leetcode-tools: ^1.12.1
+  leetcode-tools: ^1.13.0
   mkdocs-render-math-ssr: ^1.0.5
 
 dependencies:
-  leetcode-tools: 1.12.1
+  leetcode-tools: 1.13.0
   mkdocs-render-math-ssr: 1.0.5
 
 packages:
@@ -894,8 +894,8 @@ packages:
       - encoding
     dev: false
 
-  /leetcode-tools/1.12.1:
-    resolution: {integrity: sha512-i+XcYa53L1JB0w4ETqr2LulObrz0feZ++G8NpPEJMedGfWaUUWEGx2VqW/YWbwtWfjHXqVzZPcdTFu27XWbYiQ==}
+  /leetcode-tools/1.13.0:
+    resolution: {integrity: sha512-BJ+yEP2W3xELKq5J1pxdVAlYEzjKlz/HYGEKLeH76HEoNShFlReK0TQUBccwDjl+7Ctc0CawJe6supkXtC3gjg==}
     hasBin: true
     dependencies:
       chalk: 4.1.0
@@ -988,7 +988,7 @@ packages:
       hexo-fs: 3.1.0
       jsdom: 19.0.0
       mathjax-full: 3.2.0
-      yargs: 17.3.1
+      yargs: 17.4.0
     transitivePeerDependencies:
       - bufferutil
       - canvas
@@ -1540,8 +1540,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /yargs/17.3.1:
-    resolution: {integrity: sha512-WUANQeVgjLbNsEmGk20f+nlHgOqzRFpiGWVaBrYGYIGANIIu3lWjoyi0fNlFmJkvfhCZ6BXINe7/W2O2bV4iaA==}
+  /yargs/17.4.0:
+    resolution: {integrity: sha512-WJudfrk81yWFSOkZYpAZx4Nt7V4xp7S/uJkX0CnxovMCt1wCE8LNftPpNuF9X/u9gN5nsD7ycYtRcDf2pL3UiA==}
     engines: {node: '>=12'}
     dependencies:
       cliui: 7.0.4
