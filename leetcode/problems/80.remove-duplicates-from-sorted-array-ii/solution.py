@@ -7,6 +7,7 @@ class Solution:
         num = 0
         n = len(nums)
         ix = 0
+
         for i in range(n):
             cur = nums[i]
             if cur == pre and num >= 2:
@@ -18,3 +19,5 @@ class Solution:
             else:
                 pre = cur
                 num = 1
+
+        return ix
