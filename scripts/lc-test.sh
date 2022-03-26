@@ -19,7 +19,7 @@ set -x
 g++ -o \
     "${filename}.${cpp_out_suffix}" \
     "${filename}.${cpp_suffix}" \
-    -std=c++17 -O2 -W -Wall -DLOCAL \
+    -std=c++20 -O2 -W -Wall -DLOCAL \
     -fsanitize=undefined \
     -I"${TOP_DIR}/../template"
 
