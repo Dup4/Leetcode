@@ -20,7 +20,7 @@
     },
     "homepage": "https://github.com/Dup4/Leetcode#readme",
     "dependencies": {
-        "leetcode-tools": "^1.14.0",
+        "leetcode-tools": "^1.14.1",
         "mkdocs-render-math-ssr": "^1.0.5"
     }
 }

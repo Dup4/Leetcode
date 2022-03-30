@@ -1,11 +1,11 @@
 lockfileVersion: 5.3
 
 specifiers:
-  leetcode-tools: ^1.14.0
+  leetcode-tools: ^1.14.1
   mkdocs-render-math-ssr: ^1.0.5
 
 dependencies:
-  leetcode-tools: 1.14.0
+  leetcode-tools: 1.14.1
   mkdocs-render-math-ssr: 1.0.5
 
 packages:
@@ -19,15 +19,15 @@ packages:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 3.0.5
-      '@types/node': 17.0.21
+      '@types/node': 17.0.23
     dev: false
 
   /@types/minimatch/3.0.5:
     resolution: {integrity: sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==}
     dev: false
 
-  /@types/node/17.0.21:
-    resolution: {integrity: sha512-DBZCJbhII3r90XbQxI8Y9IjjiiOGlZ0Hr32omXIZvwwZ7p4DMMXGrKXVyPfuoBOri9XNtL0UK69jYIBIsRX3QQ==}
+  /@types/node/17.0.23:
+    resolution: {integrity: sha512-UxDxWn7dl97rKVeVS61vErvw086aCYhDLyvRQZ5Rk65rZKepaFdm53GeqXaKBuOhED4e9uWq34IC3TdSdJJ2Gw==}
     dev: false
 
   /@types/semver/7.3.9:
@@ -195,11 +195,11 @@ packages:
       supports-color: 7.2.0
     dev: false
 
-  /cheerio-select/1.5.0:
-    resolution: {integrity: sha512-qocaHPv5ypefh6YNxvnbABM07KMxExbtbfuJoIie3iZXX1ERwYmJcIiRrr9H05ucQP1k28dav8rpdDgjQd8drg==}
+  /cheerio-select/1.6.0:
+    resolution: {integrity: sha512-eq0GdBvxVFbqWgmCm7M3XGs1I8oLy/nExUnh6oLqmBditPO9AqQJrkslDpMun/hZ0yyTs8L0m85OHp4ho6Qm9g==}
     dependencies:
-      css-select: 4.2.1
-      css-what: 5.1.0
+      css-select: 4.3.0
+      css-what: 6.0.1
       domelementtype: 2.2.0
       domhandler: 4.3.1
       domutils: 2.8.0
@@ -209,7 +209,7 @@ packages:
     resolution: {integrity: sha512-g0J0q/O6mW8z5zxQ3A8E8J1hUgp4SMOvEoW/x84OwyHKe/Zccz83PVT4y5Crcr530FV6NgmKI1qvGTKVl9XXVw==}
     engines: {node: '>= 6'}
     dependencies:
-      cheerio-select: 1.5.0
+      cheerio-select: 1.6.0
       dom-serializer: 1.3.2
       domhandler: 4.3.1
       htmlparser2: 6.1.0
@@ -289,18 +289,18 @@ packages:
       which: 2.0.2
     dev: false
 
-  /css-select/4.2.1:
-    resolution: {integrity: sha512-/aUslKhzkTNCQUB2qTX84lVmfia9NyjP3WpDGtj/WxhwBzWBYUV3DgUpurHTme8UTPcPlAD1DJ+b0nN/t50zDQ==}
+  /css-select/4.3.0:
+    resolution: {integrity: sha512-wPpOYtnsVontu2mODhA19JrqWxNsfdatRKd64kmpRbQgh1KtItko5sTnEpPdpSaJszTOhEMlF/RPz28qj4HqhQ==}
     dependencies:
       boolbase: 1.0.0
-      css-what: 5.1.0
+      css-what: 6.0.1
       domhandler: 4.3.1
       domutils: 2.8.0
       nth-check: 2.0.1
     dev: false
 
-  /css-what/5.1.0:
-    resolution: {integrity: sha512-arSMRWIIFY0hV8pIxZMEfmMI47Wj3R/aWpZDDxWYCPEiOMv6tfOrnpDtgxBYPEQD4V0Y/958+1TdC3iWTFcUPw==}
+  /css-what/6.0.1:
+    resolution: {integrity: sha512-z93ZGFLNc6yaoXAmVhqoSIb+BduplteCt1fepvwhBUQK6MNE4g6fgjpuZKJKp0esUe+vXWlIkwZZjNWoOKw0ZA==}
     engines: {node: '>= 6'}
     dev: false
 
@@ -589,8 +589,8 @@ packages:
       lodash.get: 4.4.2
     dev: false
 
-  /graphql-request/4.1.0_graphql@16.3.0:
-    resolution: {integrity: sha512-CBFcO6LP7cg+aBMc+x9C1dZEQsKTBZKR2J+HzuB0cR/6aaU4K4/tRXTQu8CDMp5195ZU+DTNKZZOSK1WRbTeAg==}
+  /graphql-request/4.2.0_graphql@16.3.0:
+    resolution: {integrity: sha512-uFeMyhhl8ss4LFgjlfPeAn2pqYw+CJto+cjj71uaBYIMMK2jPIqgHm5KEFxUk0YDD41A8Bq31a2b4G2WJBlp2Q==}
     peerDependencies:
       graphql: 14 - 16
     dependencies:
@@ -879,13 +879,13 @@ packages:
       verror: 1.10.0
     dev: false
 
-  /leetcode-api-typescript/1.11.0:
-    resolution: {integrity: sha512-bS/eAzFZdaGk0fJh56AjJwtqLUDXRvM8iCvoIbFniAe29uI5G0KmZlXFTrUo7VSgQXSmW2SERzYNbxXV4Ex/cw==}
+  /leetcode-api-typescript/1.12.1:
+    resolution: {integrity: sha512-KbX8QcN8VRANtT54qpvaWv8HXgZgJoBMM9oAkHdsKQq1nKyHj/nZluUBR0xafjKEeGphffaptSdBnRzaHlhw7g==}
     dependencies:
       cheerio: 1.0.0-rc.10
       dotenv: 16.0.0
       graphql: 16.3.0
-      graphql-request: 4.1.0_graphql@16.3.0
+      graphql-request: 4.2.0_graphql@16.3.0
       request: 2.88.2
       request-promise-native: 1.0.9_request@2.88.2
       type-graphql: 1.1.1_graphql@16.3.0
@@ -894,15 +894,15 @@ packages:
       - encoding
     dev: false
 
-  /leetcode-tools/1.14.0:
-    resolution: {integrity: sha512-cPVxot0AnJXZP66eCyOr4zi4alIa8chGVYq0EkkWTmsxv+KiKLJaHmp+njI8ADSTTF1LzdqPn+Fu8ALmzebc7A==}
+  /leetcode-tools/1.14.1:
+    resolution: {integrity: sha512-UOnYyXpB7IhiB1UsOSuXSxOQCHd83G7vfNauu51ta5JJDpfUplQflVWKUjPVHAym7G7ZXUxnn22Cg4en8bWqCQ==}
     hasBin: true
     dependencies:
       chalk: 4.1.0
       commander: 9.1.0
       dotenv: 16.0.0
       js-yaml: 4.1.0
-      leetcode-api-typescript: 1.11.0
+      leetcode-api-typescript: 1.12.1
       shelljs: 0.8.5
     transitivePeerDependencies:
       - class-validator
@@ -1384,7 +1384,7 @@ packages:
       graphql: ^15.3.0
     dependencies:
       '@types/glob': 7.2.0
-      '@types/node': 17.0.21
+      '@types/node': 17.0.23
       '@types/semver': 7.3.9
       glob: 7.2.0
       graphql: 16.3.0
