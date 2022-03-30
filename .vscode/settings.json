@@ -1,5 +1,7 @@
 {
     "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
     "C_Cpp.autocomplete": "Default",
     "C_Cpp.default.cppStandard": "c++20",
     "C_Cpp.default.includePath": [
