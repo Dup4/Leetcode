@@ -12,7 +12,6 @@ jobs:
     name: Deploy documentation
     runs-on: ubuntu-latest
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v2
 
@@ -20,7 +19,7 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: 3.9
-          cache: 'pip'
+          cache: "pip"
 
       - name: Install Python dependencies
         run: |
@@ -34,7 +33,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
-          cache: 'pnpm'
+          cache: "pnpm"
 
       - name: Install Node dependencies
         run: |
@@ -53,8 +52,8 @@ jobs:
           publish_dir: site
           publish_branch: deploy-pages
           force_orphan: true
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
           commit_message: 🚀 Deploying to deploy-pages @ ${{ env.GITHUB_SHA }}
 
       - name: Deploy
@@ -65,6 +64,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd /var/www/dup4.cn
-            rm -rf Leetcode
-            git clone https://github.dup4.com/Dup4/Leetcode.git -b deploy-pages --depth=1
+            bash <(curl -s -L https://cdn.jsdelivr.net/gh/Dup4/bash-script-snippet@latest/deploy_gh_pages.sh) -r Dup4/Leetcode -d /var/www/dup4.cn
