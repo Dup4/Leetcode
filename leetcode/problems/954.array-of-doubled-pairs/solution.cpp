@@ -47,37 +47,42 @@ inline bool chmin(T& a, const S& b) {
 class Solution {
 public:
     bool canReorderDoubled(vector<int>& arr) {
-        for (auto& a : arr) {
-            if (a < 0) {
-                a *= -1;
-            }
-        }
+        auto check = [&arr](int f) {
+            map<int, int> mp;
+            for (const auto& a : arr) {
+                if (a == 0) {
+                    ++mp[a];
+                    continue;
+                }
 
-        map<int, int> mp;
-        for (const auto& a : arr) {
-            ++mp[a];
-        }
-
-        for (const auto& [k, v] : mp) {
-            if (v == 0) {
-                continue;
+                if (a * f > 0) {
+                    ++mp[a * f];
+                }
             }
 
-            if (k == 0) {
-                if (v & 1) {
+            for (const auto& [k, v] : mp) {
+                if (v == 0) {
+                    continue;
+                }
+
+                if (k == 0) {
+                    if (v & 1) {
+                        return false;
+                    }
+                    continue;
+                }
+
+                if (mp[k * 2] < v) {
                     return false;
                 }
-                continue;
+
+                mp[k * 2] -= v;
             }
 
-            if (mp[k * 2] != v) {
-                return false;
-            }
+            return true;
+        };
 
-            mp[k * 2] = 0;
-        }
-
-        return true;
+        return check(1) && check(-1);
     }
 };
 
