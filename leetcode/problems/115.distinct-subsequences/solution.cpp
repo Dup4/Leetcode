@@ -49,7 +49,9 @@ public:
     int numDistinct(string s, string t) {
         int n = s.length();
         int m = t.length();
-        auto f = vector<int>(m + 1, 0);
+        auto f = vector<ll>(m + 1, 0);
+
+        int Max = 2e9;
 
         f[0] = 1;
         for (const auto &c : s) {
@@ -60,6 +62,9 @@ public:
                 }
 
                 f[i] += f[i - 1];
+                if (f[i] > Max) {
+                    f[i] = 0;
+                }
             }
         }
 
