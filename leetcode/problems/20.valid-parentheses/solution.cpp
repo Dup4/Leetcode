@@ -71,7 +71,7 @@ public:
             }
         }
 
-        return true;
+        return v.empty();
     }
 };
 
