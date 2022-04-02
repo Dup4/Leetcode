@@ -46,7 +46,7 @@ inline bool chmin(T &a, const S &b) {
 
 class Solution {
 public:
-    void nextPermutation(vector<int>& nums) {
+    void nextPermutation(vector<int> &nums) {
         next_permutation(all(nums));
     }
 };
