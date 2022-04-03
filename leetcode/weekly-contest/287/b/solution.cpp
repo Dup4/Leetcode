@@ -46,9 +46,9 @@ inline bool chmin(T &a, const S &b) {
 
 class Solution {
 public:
-    vector<vector<int>> findWinners(vector<vector<int>>& matches) {
-        map <int, int> mp;
-        for (const auto& m : matches) {
+    vector<vector<int>> findWinners(vector<vector<int>> &matches) {
+        map<int, int> mp;
+        for (const auto &m : matches) {
             ++mp[m[1]];
 
             if (mp.count(m[0]) == 0) {
@@ -58,7 +58,7 @@ public:
 
         auto res = vector<vector<int>>(2, vector<int>());
 
-        for (const auto& [k, v] : mp) {
+        for (const auto &[k, v] : mp) {
             if (v == 0) {
                 res[0].push_back(k);
             }
