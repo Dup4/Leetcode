@@ -2,7 +2,7 @@
 ??? info "Metadata"
     - Link: [Find Palindrome With Fixed Length](https://leetcode.com/problems/find-palindrome-with-fixed-length)
     - Difficulty: Medium
-    - Tag: `Math`
+    - Tag: `Array` `Math`
 
 <p>Given an integer array <code>queries</code> and a <strong>positive</strong> integer <code>intLength</code>, return <em>an array</em> <code>answer</code> <em>where</em> <code>answer[i]</code> <em>is either the </em><code>queries[i]<sup>th</sup></code> <em>smallest <strong>positive palindrome</strong> of length</em> <code>intLength</code> <em>or</em> <code>-1</code><em> if no such palindrome exists</em>.</p>
 
@@ -16,7 +16,7 @@
 <strong>Output:</strong> [101,111,121,131,141,999]
 <strong>Explanation:</strong>
 The first few palindromes of length 3 are:
-101, 111, 121, 131, 141, 151, 161, 171, 181, 191, 201, ...
+101, 111, 121, 131, 141, 151, 161, 171, 181, 191, 202, ...
 The 90<sup>th</sup> palindrome of length 3 is 999.
 </pre>
 

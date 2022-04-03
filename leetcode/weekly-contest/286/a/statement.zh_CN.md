@@ -2,7 +2,7 @@
 ??? info "Metadata"
     - Link: [找出两数组的不同](https://leetcode-cn.com/problems/find-the-difference-of-two-arrays)
     - Difficulty: Easy
-    - Tag: `哈希表`
+    - Tag: `数组` `哈希表`
 
 <p>给你两个下标从 <code>0</code> 开始的整数数组 <code>nums1</code> 和 <code>nums2</code> ，请你返回一个长度为 <code>2</code> 的列表 <code>answer</code> ，其中：</p>
 

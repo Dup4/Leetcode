@@ -2,7 +2,7 @@
 ??? info "Metadata"
     - Link: [Minimum Deletions to Make Array Beautiful](https://leetcode.com/problems/minimum-deletions-to-make-array-beautiful)
     - Difficulty: Medium
-    - Tag: `Greedy` `Dynamic Programming`
+    - Tag: `Stack` `Greedy` `Array`
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code>. The array <code>nums</code> is <strong>beautiful</strong> if:</p>
 

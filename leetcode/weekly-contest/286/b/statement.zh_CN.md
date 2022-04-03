@@ -2,7 +2,7 @@
 ??? info "Metadata"
     - Link: [美化数组的最少删除数](https://leetcode-cn.com/problems/minimum-deletions-to-make-array-beautiful)
     - Difficulty: Medium
-    - Tag: `贪心` `动态规划`
+    - Tag: `栈` `贪心` `数组`
 
 <p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> ，如果满足下述条件，则认为数组 <code>nums</code> 是一个 <strong>美丽数组</strong> ：</p>
 

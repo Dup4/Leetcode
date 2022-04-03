@@ -2,7 +2,7 @@
 ??? info "Metadata"
     - Link: [Maximum Value of K Coins From Piles](https://leetcode.com/problems/maximum-value-of-k-coins-from-piles)
     - Difficulty: Hard
-    - Tag: `Dynamic Programming`
+    - Tag: `Array` `Dynamic Programming` `Prefix Sum`
 
 <p>There are <code>n</code> <strong>piles</strong> of coins on a table. Each pile consists of a <strong>positive number</strong> of coins of assorted denominations.</p>
 
