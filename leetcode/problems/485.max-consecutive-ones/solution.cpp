@@ -46,10 +46,11 @@ inline bool chmin(T &a, const S &b) {
 
 class Solution {
 public:
-    int findMaxConsecutiveOnes(vector<int>& nums) {
+    int findMaxConsecutiveOnes(vector<int> &nums) {
         int res = 0;
         int cur = 0;
-        for (auto& a : nums) {
+
+        for (auto &a : nums) {
             if (a == 1) {
                 ++cur;
                 res = max(res, cur);
