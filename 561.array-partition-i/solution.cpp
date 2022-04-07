@@ -46,7 +46,7 @@ inline bool chmin(T &a, const S &b) {
 
 class Solution {
 public:
-    int arrayPairSum(vector<int>& nums) {
+    int arrayPairSum(vector<int> &nums) {
         sort(all(nums));
         int res = 0;
         for (int i = 0; i < nums.size(); i += 2) {
