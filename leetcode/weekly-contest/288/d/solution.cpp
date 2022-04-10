@@ -68,65 +68,40 @@ public:
             return res;
         }
 
-        auto cnt = vector<int>(target + 1, 0);
-        auto sum = vector<ll>(target + 1, 0);
-        auto remind = vector<ll>(n + 1, 0);
+        int cnt = 0;
+        ll sum = 0;
+        ll res_p = 0;
+        ll target_need = 1ll * n * target - accumulate(all(fl), 0ll);
 
-        for (auto &_fl : fl) {
-            ++cnt[_fl];
-            sum[_fl] += _fl;
-        }
-
-        for (int i = 1; i <= target; i++) {
-            cnt[i] += cnt[i - 1];
-            sum[i] += sum[i - 1];
-        }
-
-        for (int i = n - 1, j = 1; i >= 0; i--, j++) {
-            remind[j] = remind[j - 1] + (target - fl[i]);
-        }
-
-        ll resP = 0;
-        int ix = n;
-        for (int i = 1; i <= target; i++) {
-            int tot_cnt = cnt[i];
-            ll has_sum = sum[i];
-
-            ll need = 1ll * i * tot_cnt - has_sum;
-
-            if (i == target) {
-                need = 0;
-                ix = n;
+        for (int i = 0, j = 0, k = 0; i < target; i++) {
+            while (j < n && fl[j] <= i) {
+                ++cnt;
+                sum += fl[j];
+                ++j;
             }
 
-            if (need > has) {
+            ll remind = has - (1ll * i * cnt - sum);
+
+            while (k < n && (remind < target_need || k < cnt)) {
+                target_need -= target - fl[k];
+                k++;
+            }
+
+            remind -= target_need;
+
+            if (remind < 0) {
                 continue;
             }
 
             ll cur = 0;
-            ll _has = has - need;
+            cur += 1ll * partial * i * (cnt > 0);
+            cur += 1ll * full * (n - k);
+            cur += 1ll * full * max<ll>(0, min<ll>(cnt - 1, remind / (target - i)));
 
-            if (i == target) {
-                while (ix > 0 && remind[ix] > _has) {
-                    --ix;
-                }
-            } else {
-                while (ix > 0 && (ix > n - tot_cnt || remind[ix] > _has)) {
-                    --ix;
-                }
-            }
-
-            if (i == target) {
-                cur = 1ll * full * ix;
-            } else {
-                cur = 1ll * i * partial +
-                      1ll * full * min(ll(n - 1), (ix + ((_has - remind[ix]) / max(1, (target - i)))));
-            }
-
-            resP = max(resP, cur);
+            res_p = max(res_p, cur);
         }
 
-        return res + resP;
+        return res + res_p;
     }
 };
 
