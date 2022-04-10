@@ -50,7 +50,8 @@
         "limits": "cpp",
         "cassert": "cpp",
         "cstdalign": "cpp",
-        "ios": "cpp"
+        "ios": "cpp",
+        "tuple": "cpp"
     },
     "cSpell.words": [
         "arithmatex",

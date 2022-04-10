@@ -44,7 +44,37 @@ inline bool chmin(T &a, const S &b) {
 #endif
 // head
 
-// solution class
+class Solution {
+public:
+    int largestInteger(int num) {
+        vector<vector<int>> f(2, vector<int>());
+        auto g = vector<int>();
+
+        int x = num;
+        while (x) {
+            int y = x % 10;
+            f[y % 2].push_back(y);
+            x /= 10;
+            g.push_back(y % 2);
+        }
+
+        sort(all(f[0]));
+        sort(all(f[1]));
+
+        reverse(all(f[0]));
+        reverse(all(f[1]));
+
+        ll res = 0;
+        ll base = 1;
+        for (auto &_g : g) {
+            res += base * f[_g].back();
+            f[_g].pop_back();
+            base *= 10;
+        }
+
+        return res;
+    }
+};
 
 #ifdef LOCAL
 

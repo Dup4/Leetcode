@@ -44,7 +44,41 @@ inline bool chmin(T &a, const S &b) {
 #endif
 // head
 
-// solution class
+class Solution {
+public:
+    int maximumProduct(vector<int> &nums, int k) {
+        priority_queue<int, vector<int>, greater<int>> pq;
+        for (auto &a : nums) {
+            if (a == 0) {
+                if (k == 0) {
+                    return 0;
+                }
+                --k;
+                ++a;
+            }
+
+            pq.push(a);
+        }
+
+        while (k) {
+            int a = pq.top();
+            pq.pop();
+            ++a;
+            --k;
+            pq.push(a);
+        }
+
+        ll res = 1;
+        while (!pq.empty()) {
+            int x = pq.top();
+            pq.pop();
+            res *= x;
+            res %= mod;
+        }
+
+        return res;
+    }
+};
 
 #ifdef LOCAL
 
