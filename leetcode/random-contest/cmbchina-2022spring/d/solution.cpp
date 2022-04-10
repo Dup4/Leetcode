@@ -51,83 +51,79 @@ public:
     int goShopping(vector<int> &A, vector<int> &B) {
         int n = A.size();
 
-        auto sol = [&](int flag) {
-            auto f = vector<vector<vector<PII>>>(n + 1, vector<vector<PII>>(4, vector<PII>(4, PII(INF, INF))));
+        auto f = vector<vector<vector<PII>>>(n + 1, vector<vector<PII>>(4, vector<PII>(4, PII(INF, INF))));
 
-            auto C = vector<PII>();
-            for (int i = 0; i < n; i++) {
-                C.push_back(PII(B[i], A[i]));
-            }
+        auto C = vector<PII>();
+        for (int i = 0; i < n; i++) {
+            C.push_back(PII(B[i], A[i]));
+        }
 
-            f[0][0][0] = PII(0, 0);
+        f[0][0][0] = PII(0, 0);
 
-            auto Min = [&flag](const PII &a, const PII &b) {
-                if (flag) {
-                    if ((1ll * a.se * 7 + 1ll * a.fi * 10) <= (1ll * b.se * 7 + 1ll * b.fi * 10)) {
-                        return a;
-                    }
-
-                    return b;
-                }
-
-                if (a.fi + a.se <= b.fi + b.se) {
+        auto Min = [](const PII &a, const PII &b, int j) {
+            if (j == 3) {
+                if ((1ll * a.se * 7 + 1ll * a.fi * 10) < (1ll * b.se * 7 + 1ll * b.fi * 10)) {
                     return a;
                 }
 
                 return b;
-            };
-
-            sort(all(C));
-            reverse(all(C));
-
-            for (int i = 1; i <= n; i++) {
-                PII now = C[i - 1];
-                for (int j = 0; j <= 3; j++) {
-                    for (int k = 0; k < 3; k++) {
-                        if (j) {
-                            PII cur = f[i - 1][j - 1][k];
-                            cur.se += now.se;
-                            f[i][j][k] = Min(f[i][j][k], cur);
-                        }
-
-                        if (j == 3) {
-                            PII cur = f[i - 1][j][k];
-                            cur.se += now.se;
-                            f[i][j][k] = Min(f[i][j][k], cur);
-                        }
-
-                        if (k == 0) {
-                            PII cur = f[i - 1][j][2];
-                            f[i][j][k] = Min(f[i][j][k], cur);
-                        } else {
-                            PII cur = f[i - 1][j][k - 1];
-                            cur.fi += now.fi;
-                            f[i][j][k] = Min(f[i][j][k], cur);
-                        }
-                    }
-                }
             }
 
-            ll res = INF;
-            for (int j = 0; j <= 3; j++) {
-                for (int k = 0; k < 3; k++) {
-                    PII cur = f[n][j][k];
-                    ll cur_res = cur.fi;
-
-                    if (j == 3) {
-                        cur_res += 1ll * cur.se * 7 / 10;
-                    } else {
-                        cur_res += cur.se;
-                    }
-
-                    res = min(res, cur_res);
-                }
+            if (a.fi + a.se < b.fi + b.se) {
+                return a;
             }
 
-            return res;
+            return b;
         };
 
-        return min(sol(0), sol(1));
+        sort(all(C));
+        reverse(all(C));
+
+        for (int i = 1; i <= n; i++) {
+            PII now = C[i - 1];
+            for (int j = 0; j <= 3; j++) {
+                for (int k = 0; k < 3; k++) {
+                    if (j) {
+                        PII cur = f[i - 1][j - 1][k];
+                        cur.se += now.se;
+                        f[i][j][k] = Min(f[i][j][k], cur, j);
+                    }
+
+                    if (j == 3) {
+                        PII cur = f[i - 1][j][k];
+                        cur.se += now.se;
+                        f[i][j][k] = Min(f[i][j][k], cur, j);
+                    }
+
+                    if (k == 0) {
+                        PII cur = f[i - 1][j][2];
+                        f[i][j][k] = Min(f[i][j][k], cur, j);
+                    } else {
+                        PII cur = f[i - 1][j][k - 1];
+                        cur.fi += now.fi;
+                        f[i][j][k] = Min(f[i][j][k], cur, j);
+                    }
+                }
+            }
+        }
+
+        ll res = INF;
+        for (int j = 0; j <= 3; j++) {
+            for (int k = 0; k < 3; k++) {
+                PII cur = f[n][j][k];
+                ll cur_res = cur.fi;
+
+                if (j == 3) {
+                    cur_res += 1ll * cur.se * 7 / 10;
+                } else {
+                    cur_res += cur.se;
+                }
+
+                res = min(res, cur_res);
+            }
+        }
+
+        return res;
     }
 };
 
