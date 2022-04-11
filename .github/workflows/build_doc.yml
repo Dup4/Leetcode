@@ -15,7 +15,6 @@ jobs:
     name: Build documentation
     runs-on: ubuntu-latest
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v2
 
@@ -23,7 +22,7 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: 3.9
-          cache: 'pip'
+          cache: "pip"
 
       - name: Install Python dependencies
         run: |
@@ -37,7 +36,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
-          cache: 'pnpm'
+          cache: "pnpm"
 
       - name: Install Node dependencies
         run: |
@@ -46,6 +45,7 @@ jobs:
       - name: Build
         env:
           GOOGLE_ANALYTICS_KEY: G-QR41N1MXE9
+          ENABLE_MATHJAX: false
         run: |
           pnpm build
 
@@ -56,6 +56,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: site
           force_orphan: true
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
           commit_message: 🚀 Deploying to gh-pages @ ${{ env.GITHUB_SHA }}
