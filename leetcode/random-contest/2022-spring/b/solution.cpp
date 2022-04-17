@@ -46,7 +46,7 @@ inline bool chmin(T &a, const S &b) {
 
 class Solution {
 public:
-    int perfectMenu(vector<int>& materials, vector<vector<int>>& cookbooks, vector<vector<int>>& attribute, int limit) {
+    int perfectMenu(vector<int> &materials, vector<vector<int>> &cookbooks, vector<vector<int>> &attribute, int limit) {
         int res = -1;
 
         int n = cookbooks.size();
