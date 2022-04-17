@@ -180,17 +180,29 @@ public:
         tarjan.gao();
         tarjan.gogogo();
 
-        for (int i = 1; i <= tarjan.num; i++) {
-            cout << f[i] << " \n"[i == tarjan.num];
-        }
+        auto d = vector<int>(tarjan.num + 1, 0);
 
-        for (int u = 1; u <= tarjan.num; u++) {
-            erp(G[1], u) {
-                cout << u << " " << v << endl;
+        for (int i = 1; i <= tarjan.num; i++) {
+            erp(G[1], i) {
+                ++d[i];
+                ++d[v];
             }
         }
 
-        return 1;
+        auto v = vector<int>();
+
+        for (int i = 1; i <= tarjan.num; i++) {
+            // dbg(i, d[i]);
+
+            if (d[i] == 2) {
+                v.push_back(f[i]);
+            }
+        }
+
+        // dbg("ddd");
+
+        // return 1;
+        return accumulate(all(v), 0ll) - *max_element(all(v));
     }
 };
 
@@ -210,7 +222,9 @@ int main() {
                 {2, 5},
         });
 
-        s.minimumCost(cost, roads);
+        auto ans = s.minimumCost(cost, roads);
+
+        dbg(ans);
     }
 
     {
@@ -222,7 +236,9 @@ int main() {
                 {3, 1},
         });
 
-        s.minimumCost(cost, roads);
+        auto ans = s.minimumCost(cost, roads);
+
+        dbg(ans);
     }
 
     return 0;
