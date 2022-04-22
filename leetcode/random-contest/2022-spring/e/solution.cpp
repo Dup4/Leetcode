@@ -44,7 +44,7 @@ inline bool chmin(T &a, const S &b) {
 #endif
 // head
 
-const int N = 1e5 + 100;
+const int N = 2e5 + 100;
 const int INF = 0x3f3f3f3f;
 int n, m;
 int f[N];
@@ -87,6 +87,7 @@ struct Tarjan {
                 pre_cnt++;
                 continue;
             }
+
             if (!DFN[v]) {
                 ++son_cnt;
                 dfs(v, u);
@@ -165,6 +166,10 @@ public:
         n = c.size();
         m = roads.size();
 
+        if (n == 1) {
+            return c[0];
+        }
+
         G[0].init();
 
         c.insert(c.begin(), 0);
@@ -179,6 +184,10 @@ public:
 
         tarjan.gao();
         tarjan.gogogo();
+
+        if (tarjan.num == 1) {
+            return f[1];
+        }
 
         auto d = vector<int>(tarjan.num + 1, 0);
 
@@ -202,6 +211,7 @@ public:
         // dbg("ddd");
 
         // return 1;
+        assert(v.size() > 0);
         return accumulate(all(v), 0ll) - *max_element(all(v));
     }
 };
@@ -234,6 +244,24 @@ int main() {
                 {0, 2},
                 {2, 3},
                 {3, 1},
+        });
+
+        auto ans = s.minimumCost(cost, roads);
+
+        dbg(ans);
+    }
+
+    {
+        auto s = Solution();
+        auto cost = vector<int>({1, 2, 3, 4, 5});
+        auto roads = vector<vector<int>>({
+                {0, 1},
+                {0, 2},
+                {0, 3},
+                {1, 2},
+                {1, 3},
+                {2, 3},
+                {3, 4},
         });
 
         auto ans = s.minimumCost(cost, roads);
