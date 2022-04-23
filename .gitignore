@@ -5,6 +5,8 @@
 *.log
 
 .clangd
+.cache
+
 .env
 env.sh
 
