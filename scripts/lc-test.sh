@@ -14,6 +14,10 @@ filename="solution"
 cpp_suffix="cpp"
 cpp_out_suffix="cpp.out"
 
+if [[ -n "${1}" ]]; then
+    filename="${1}"
+fi
+
 set -x
 
 g++ -o \
