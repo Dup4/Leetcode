@@ -1,7 +1,8 @@
 {
-    "editor.formatOnSave": true,
     "editor.tabSize": 4,
     "editor.insertSpaces": true,
+    "editor.formatOnSave": true,
+    "editor.trimAutoWhitespace": true,
     "C_Cpp.autocomplete": "Default",
     "C_Cpp.default.cppStandard": "c++20",
     "C_Cpp.default.includePath": [
@@ -11,6 +12,18 @@
     ],
     "C_Cpp.default.defines": [
         "LOCAL"
+    ],
+    "clangd.arguments": [
+        "--query-driver=/usr/local/bin/g++",
+        "--background-index",
+        "--header-insertion=iwyu",
+        "--all-scopes-completion",
+        "--completion-style=detailed",
+        "--cross-file-rename",
+        "--enable-config",
+        "--pretty",
+        "--clang-tidy",
+        "--pch-storage=memory",
     ],
     "files.associations": {
         "BUILD": "starlark",
