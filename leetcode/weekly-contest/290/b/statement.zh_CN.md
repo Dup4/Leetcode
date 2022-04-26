@@ -1,6 +1,6 @@
 
 ??? info "Metadata"
-    - Link: [统计圆内格点数目](https://leetcode-cn.com/problems/count-lattice-points-inside-a-circle)
+    - Link: [统计圆内格点数目](https://leetcode.cn/problems/count-lattice-points-inside-a-circle)
     - Difficulty: Medium
     - Tag: 
 

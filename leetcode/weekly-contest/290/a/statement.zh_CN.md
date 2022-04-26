@@ -1,6 +1,6 @@
 
 ??? info "Metadata"
-    - Link: [多个数组求交集](https://leetcode-cn.com/problems/intersection-of-multiple-arrays)
+    - Link: [多个数组求交集](https://leetcode.cn/problems/intersection-of-multiple-arrays)
     - Difficulty: Easy
     - Tag: 
 

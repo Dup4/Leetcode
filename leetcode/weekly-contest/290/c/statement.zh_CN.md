@@ -1,6 +1,6 @@
 
 ??? info "Metadata"
-    - Link: [统计包含每个点的矩形数目](https://leetcode-cn.com/problems/count-number-of-rectangles-containing-each-point)
+    - Link: [统计包含每个点的矩形数目](https://leetcode.cn/problems/count-number-of-rectangles-containing-each-point)
     - Difficulty: Medium
     - Tag: 
 

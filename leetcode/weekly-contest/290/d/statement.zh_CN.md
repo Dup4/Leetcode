@@ -1,6 +1,6 @@
 
 ??? info "Metadata"
-    - Link: [花期内花的数目](https://leetcode-cn.com/problems/number-of-flowers-in-full-bloom)
+    - Link: [花期内花的数目](https://leetcode.cn/problems/number-of-flowers-in-full-bloom)
     - Difficulty: Hard
     - Tag: 
 
