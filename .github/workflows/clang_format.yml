@@ -15,14 +15,14 @@ jobs:
 
       - uses: DoozyX/clang-format-lint-action@v0.13
         with:
-            source: '.'
-            exclude: './lib'
-            extensions: 'h,cpp,c'
-            clangFormatVersion: 13
-            inplace: False
+          source: "."
+          exclude: "./lib"
+          extensions: "h,cpp,c"
+          clangFormatVersion: 13
+          inplace: False
 
       - uses: EndBug/add-and-commit@v7
         with:
           author_name: GitHub Actions
           author_email: 41898282+github-actions[bot]@users.noreply.github.com
-          message: 'style: clang-format changes'
+          message: "style: clang-format changes"
