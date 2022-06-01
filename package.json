@@ -1,6 +1,7 @@
 {
     "name": "leetcode",
     "version": "1.0.0",
+    "packageManager": "pnpm@7.1.7",
     "description": "leetcode",
     "directories": {
         "doc": "docs"
@@ -19,8 +20,10 @@
         "url": "https://github.com/Dup4/Leetcode/issues"
     },
     "homepage": "https://github.com/Dup4/Leetcode#readme",
-    "dependencies": {
+    "devDependencies": {
+        "class-validator": "^0.12.0",
         "leetcode-tools": "^1.14.5",
-        "mkdocs-render-math-ssr": "^1.0.5"
+        "mathjax-render-for-mkdocs-material": "^0.0.2",
+        "pnpm": "^7.1.7"
     }
 }
