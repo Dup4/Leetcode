@@ -30,6 +30,6 @@ g++ -o \
 set +x
 
 if [[ -f "${filename}.${cpp_out_suffix}" ]]; then
-    ./"${filename}.${cpp_out_suffix}"
+    time ./"${filename}.${cpp_out_suffix}"
     rm "${filename}.${cpp_out_suffix}"
 fi
