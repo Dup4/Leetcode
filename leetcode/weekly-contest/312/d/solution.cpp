@@ -102,23 +102,44 @@ public:
         sort(all(node));
 
         for (int i = 0; i < n; i++) {
-            int val = node[i].first;
-            int u = node[i].second;
-            ok_node[u] = 1;
-            ufs.mp[u][val] = 1;
+            int _val = node[i].first;
+            int r = i;
 
-            for (const auto &v : graph[u]) {
-                if (ok_node[v]) {
-                    ufs.merge(u, v);
+            for (int j = i; j < n; j++) {
+                int val = node[j].first;
+                if (val != _val) {
+                    break;
+                }
+
+                int u = node[j].second;
+
+                r = j;
+
+                ok_node[u] = 1;
+                ufs.mp[u][val] = 1;
+
+                for (const auto &v : graph[u]) {
+                    if (ok_node[v]) {
+                        ufs.merge(u, v);
+                    }
                 }
             }
 
-            int rt = ufs.find(u);
-            auto &mp = ufs.mp[rt];
+            for (int j = i; j <= r; j++) {
+                int val = node[j].first;
+                int u = node[j].second;
 
-            int tot = mp[val];
-            res += tot;
+                int rt = ufs.find(u);
+                auto &mp = ufs.mp[rt];
+
+                int tot = mp[val];
+                res += tot;
+            }
+
+            i = r;
         }
+
+        res -= (res - n) / 2;
 
         return res;
     }
