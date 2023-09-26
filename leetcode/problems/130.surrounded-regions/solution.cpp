@@ -43,38 +43,59 @@ inline bool chmin(T &a, const S &b) {
 #endif
 // head
 
+// correct
+
+// 0 1 1 0
+// 1 0 0 1
+// 0 1 1 0
+
+// X X X X
+// X O O X
+// X X O X
+// X O X X
+
 class Solution {
 public:
+    bool is_valid_point(int x, int y) {
+        if (x < 0 || x >= n) {
+            return false;
+        }
+
+        if (y < 0 || y >= m) {
+            return false;
+        }
+
+        return true;
+    }
+
+    void dfs(int x, int y, vector<vector<char>> &board) {
+        board[x][y] = 'B';
+
+        for (const auto &d : dir) {
+            int nx = x + d[0];
+            int ny = y + d[1];
+
+            if (!is_valid_point(nx, ny)) {
+                continue;
+            }
+
+            if (board[nx][ny] == 'X' || board[nx][ny] == 'B') {
+                continue;
+            }
+
+            dfs(nx, ny, board);
+        }
+    }
+
     void solve(vector<vector<char>> &board) {
-        int n = int(board.size());
-        int m = int(board[0].size());
-
-        vector<vector<int>> f(n + 5, vector<int>(m + 5, 0));
-        vector<vector<int>> g(n + 5, vector<int>(m + 5, 0));
+        n = int(board.size());
+        m = int(board[0].size());
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (board[i][j] == 'X') {
-                    f[i][j] = 1;
-                }
-
-                if (i && j) {
-                    if (f[i - 1][j] && f[i][j - 1]) {
-                        f[i][j] = 1;
-                    }
-                }
-            }
-        }
-
-        for (int i = n - 1; i >= 0; i--) {
-            for (int j = m - 1; j >= 0; j--) {
-                if (board[i][j] == 'X') {
-                    g[i][j] = 1;
-                }
-
-                if (i < n - 1 && j < m - 1) {
-                    if (g[i + 1][j] && g[i][j + 1]) {
-                        g[i][j] = 1;
+                if (i == 0 || j == 0 || i == n - 1 || j == m - 1) {
+                    if (board[i][j] == 'O') {
+                        dfs(i, j, board);
                     }
                 }
             }
@@ -82,12 +103,26 @@ public:
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (g[i][j]) {
+                if (board[i][j] == 'O') {
                     board[i][j] = 'X';
+                }
+
+                if (board[i][j] == 'B') {
+                    board[i][j] = 'O';
                 }
             }
         }
     }
+
+private:
+    int n, m;
+
+    inline const static auto dir = vector<vector<int>>({
+            {0, 1},
+            {1, 0},
+            {-1, 0},
+            {0, -1},
+    });
 };
 
 #ifdef LOCAL
