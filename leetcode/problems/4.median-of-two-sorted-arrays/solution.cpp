@@ -26,7 +26,6 @@ using namespace __gnu_pbds;
 using namespace std;
 template <typename T>
 using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
-const ll mod = 1e9 + 7;
 
 template <typename T, typename S>
 inline bool chmax(T &a, const S &b) {
@@ -47,10 +46,55 @@ inline bool chmin(T &a, const S &b) {
 
 class Solution {
 public:
+    int findKth(const vector<int> &nums1, const vector<int> &nums2, int k) {
+        int n = int(nums1.size());
+        int m = int(nums2.size());
+
+        int l = 0, r = 0;
+        while (true) {
+            if (l >= n) {
+                return nums2[r + k - 1];
+            }
+
+            if (r >= m) {
+                return nums1[l + k - 1];
+            }
+
+            if (k == 1) {
+                if (nums1[l] <= nums2[r]) {
+                    return nums1[l];
+                } else {
+                    return nums2[r];
+                }
+            }
+
+            int mid = min(k / 2, min(n - l, m - r));
+            int num1 = nums1[l + mid - 1];
+            int num2 = nums2[r + mid - 1];
+
+            if (num1 <= num2) {
+                l = l + mid;
+                k -= mid;
+            } else {
+                r = r + mid;
+                k -= mid;
+            }
+        }
+    }
+
     double findMedianSortedArrays(vector<int> &nums1, vector<int> &nums2) {
-        int n = nums1.size();
-        int m = nums2.size();
+        int n = int(nums1.size());
+        int m = int(nums2.size());
         int tot = n + m;
+
+        if (tot & 1) {
+            return findKth(nums1, nums2, (tot + 1) / 2);
+        } else {
+            int num1 = findKth(nums1, nums2, tot / 2);
+            int num2 = findKth(nums1, nums2, tot / 2 + 1);
+
+            return (num1 + num2) * 1.0 / 2;
+        }
     }
 };
 
